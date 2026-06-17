@@ -67,17 +67,75 @@ export interface SkillPackage {
   assetFiles: string[];
 }
 
+export type SlideLayout =
+  | "hero-statement"
+  | "two-column"
+  | "insight-cards"
+  | "process-flow"
+  | "timeline"
+  | "comparison"
+  | "metric-dashboard"
+  | "image-focus"
+  | "closing";
+
+export interface VisualPalette {
+  background: string;
+  surface: string;
+  primary: string;
+  secondary: string;
+  accent: string;
+  ink: string;
+  muted: string;
+}
+
+export interface VisualFonts {
+  heading: string;
+  body: string;
+  mono: string;
+}
+
+export interface VisualTheme {
+  name: string;
+  palette: VisualPalette;
+  fonts: VisualFonts;
+  styleNotes: string;
+}
+
+export interface SlideMetric {
+  label: string;
+  value: string;
+  detail?: string;
+}
+
+export interface SlideDiagram {
+  type: "process" | "timeline" | "cycle" | "matrix" | "architecture" | "comparison";
+  nodes: string[];
+}
+
+export interface SlideVisualAsset {
+  kind: "illustration" | "photo" | "icon" | "chart" | "none";
+  prompt: string;
+  alt: string;
+  placement: "right" | "left" | "background" | "banner" | "inline";
+}
+
 export interface SlidePlan {
   title: string;
   purpose: string;
   bullets: string[];
   visualHint: string;
+  layout: SlideLayout;
+  keyMessage: string;
+  metrics: SlideMetric[];
+  diagram?: SlideDiagram;
+  image?: SlideVisualAsset;
 }
 
 export interface DeckPlan {
   title: string;
   subtitle: string;
   narrative: string;
+  visualTheme: VisualTheme;
   slides: SlidePlan[];
 }
 

@@ -1,0 +1,73 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Length 3538 >>
+stream
+BT /F1 11 Tf 50 760 Td (海岳大模型：赋能数字企业智能化跃迁) Tj ET
+BT /F1 11 Tf 50 744 Td (浪潮数字企业 · 客户中层汇报方案) Tj ET
+BT /F1 11 Tf 50 728 Td (Topic: 海岳大模型) Tj ET
+BT /F1 11 Tf 50 712 Td (Audience: 客户中层) Tj ET
+BT /F1 11 Tf 50 696 Td (Pages: 9) Tj ET
+BT /F1 11 Tf 50 680 Td (1. 封面：智启新程，岳立潮头) Tj ET
+BT /F1 11 Tf 50 664 Td (- 浪潮数字企业自主研发) Tj ET
+BT /F1 11 Tf 50 648 Td (- 面向中台化、服务化、智能化演进需求) Tj ET
+BT /F1 11 Tf 50 632 Td (- 已通过国家网信办生成式AI备案) Tj ET
+BT /F1 11 Tf 50 616 Td (2. 目录：四维驱动，价值闭环) Tj ET
+BT /F1 11 Tf 50 600 Td (- 01 现状之困：业务智能化卡点在哪？) Tj ET
+BT /F1 11 Tf 50 584 Td (- 02 海岳之能：为什么是可靠的选择？) Tj ET
+BT /F1 11 Tf 50 568 Td (- 03 落地之径：如何快速嵌入您的工作流？) Tj ET
+BT /F1 11 Tf 50 552 Td (- 04 共建之策：浪潮如何持续支撑您？) Tj ET
+BT /F1 11 Tf 50 536 Td (3. 现状之困：中层管理者的三大断点) Tj ET
+BT /F1 11 Tf 50 520 Td (- 跨系统数据难打通，报表生成平均耗时3.2小时/周) Tj ET
+BT /F1 11 Tf 50 504 Td (- 现有AI工具无法对接OA/ERP等核心业务系统) Tj ET
+BT /F1 11 Tf 50 488 Td (- 一线员工AI使用率不足17%，缺乏场景化引导) Tj ET
+BT /F1 11 Tf 50 472 Td (4. 海岳之能：全栈可控的AI原生引擎) Tj ET
+BT /F1 11 Tf 50 456 Td (- 100B+参数规模，中文理解与生成能力达行业SOTA) Tj ET
+BT /F1 11 Tf 50 440 Td (- 支持GPU/CPU混合推理，国产芯片适配率达100%) Tj ET
+BT /F1 11 Tf 50 424 Td (- 提供Prompt Studio与Agent Flow双低代码平台) Tj ET
+BT /F1 11 Tf 50 408 Td (5. 能力矩阵：不止于对话，更懂您的业务) Tj ET
+BT /F1 11 Tf 50 392 Td (- 知识中枢：自动构建部门知识图谱，检索准确率提升68%) Tj ET
+BT /F1 11 Tf 50 376 Td (- 流程智控：RPA+LLM联合调度，审批链路压缩42%) Tj ET
+BT /F1 11 Tf 50 360 Td (- 决策沙盘：多源数据融合分析，预测偏差<8.3%) Tj ET
+BT /F1 11 Tf 50 344 Td (6. 落地之径：三步走，零负担接入) Tj ET
+BT /F1 11 Tf 50 328 Td (- 阶段1（2周）：业务场景诊断+POC环境部署) Tj ET
+BT /F1 11 Tf 50 312 Td (- 阶段2（4周）：1个高频场景上线（如智能公文生成）) Tj ET
+BT /F1 11 Tf 50 296 Td (- 阶段3（8周）：3个系统对接+部门级推广) Tj ET
+BT /F1 11 Tf 50 280 Td (7. 实践印证：已在5类政企场景稳定运行) Tj ET
+BT /F1 11 Tf 50 264 Td (- 某省大数据局：政策文件智能解读，人工复核减少75%) Tj ET
+BT /F1 11 Tf 50 248 Td (- 某央企制造集团：设备维修报告自动生成，撰写效率提升5倍) Tj ET
+BT /F1 11 Tf 50 232 Td (- 某市医保中心：参保咨询应答准确率98.2%，坐席压力下降31%) Tj ET
+BT /F1 11 Tf 50 216 Td (8. 共建之策：不止交付，更赋能力) Tj ET
+BT /F1 11 Tf 50 200 Td (- 专属客户成功经理全程跟进，SLA响应≤2小时) Tj ET
+BT /F1 11 Tf 50 184 Td (- 每季度发布行业微调模型包（政务/金融/能源）) Tj ET
+BT /F1 11 Tf 50 168 Td (- 共建AI应用创新实验室，共享浪潮算力与数据治理经验) Tj ET
+BT /F1 11 Tf 50 152 Td (9. 结语：让AI真正长在您的业务土壤里) Tj ET
+BT /F1 11 Tf 50 136 Td (- 即日起开放首批20个客户深度体验名额) Tj ET
+BT /F1 11 Tf 50 120 Td (- 提供免费业务场景适配评估报告) Tj ET
+BT /F1 11 Tf 50 104 Td (- 签署意向后3个工作日内启动POC) Tj ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000000311 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+3901
+%%EOF

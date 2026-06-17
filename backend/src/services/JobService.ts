@@ -4,8 +4,7 @@ import type {
   GenerationJob,
   GenerationRequest,
   JobStatus,
-  SkillPackage,
-  SlidePlan
+  SkillPackage
 } from "../types/generation.js";
 import { SkillLoader, type UploadedSkillFile } from "../skill-loader/SkillLoader.js";
 import { PromptBuilder } from "../generators/PromptBuilder.js";
@@ -13,6 +12,7 @@ import { OpenAiCompatibleProvider } from "../providers/OpenAiCompatibleProvider.
 import { createFallbackDeck } from "../generators/FallbackDeckFactory.js";
 import { DeckRenderer } from "../renderers/DeckRenderer.js";
 import { config } from "../config.js";
+import { VisualDesignAgent } from "../generators/VisualDesignAgent.js";
 
 const progressByStatus: Record<JobStatus, number> = {
   Created: 4,
@@ -30,8 +30,8 @@ const messageByStatus: Record<JobStatus, string> = {
   ValidatingSkill: "正在校验 Skill 结构与模板资源",
   BuildingPrompt: "正在组合生成提示词与品牌规则",
   GeneratingOutline: "正在生成演示稿大纲",
-  GeneratingSlides: "正在撰写逐页内容",
-  Rendering: "正在渲染预览与导出文件",
+  GeneratingSlides: "正在生成逐页内容、版式和视觉资产规划",
+  Rendering: "正在渲染配色、排版、图片和导出文件",
   Ready: "演示稿已生成，可预览和导出",
   Failed: "生成失败"
 };
@@ -44,27 +44,6 @@ function asErrorMessage(error: unknown) {
   return error instanceof Error ? error.message : String(error);
 }
 
-function normalizeSlides(deck: DeckPlan, expectedCount: number, fallback: DeckPlan): DeckPlan {
-  const slides = Array.isArray(deck.slides) ? deck.slides : [];
-  const normalizedSlides: SlidePlan[] = Array.from({ length: expectedCount }, (_, index) => {
-    const source = slides[index] ?? fallback.slides[index] ?? fallback.slides[fallback.slides.length - 1];
-
-    return {
-      title: source.title || `第 ${index + 1} 页`,
-      purpose: source.purpose || fallback.slides[index]?.purpose || "承接整体汇报逻辑",
-      bullets: Array.isArray(source.bullets) && source.bullets.length > 0 ? source.bullets.slice(0, 5) : fallback.slides[index]?.bullets ?? [],
-      visualHint: source.visualHint || fallback.slides[index]?.visualHint || "结构化商务版式"
-    };
-  });
-
-  return {
-    title: deck.title || fallback.title,
-    subtitle: deck.subtitle || fallback.subtitle,
-    narrative: deck.narrative || fallback.narrative,
-    slides: normalizedSlides
-  };
-}
-
 export class JobService {
   private readonly jobs = new Map<string, GenerationJob>();
 
@@ -72,7 +51,8 @@ export class JobService {
     private readonly skillLoader = new SkillLoader(),
     private readonly promptBuilder = new PromptBuilder(),
     private readonly provider = new OpenAiCompatibleProvider(),
-    private readonly renderer = new DeckRenderer()
+    private readonly renderer = new DeckRenderer(),
+    private readonly visualAgent = new VisualDesignAgent()
   ) {}
 
   createJob(request: GenerationRequest, uploadedSkill?: UploadedSkillFile) {
@@ -131,7 +111,7 @@ export class JobService {
       ]);
 
       return {
-        deck: normalizeSlides(outline, request.brief.pageCount, fallback),
+        deck: this.visualAgent.enrich(outline, request.brief.pageCount, fallback, request.brief, skill),
         prompt,
         usedFallback: false
       };
@@ -148,20 +128,26 @@ export class JobService {
     }
   }
 
-  private async generateSlides(request: GenerationRequest, outline: DeckPlan, prompt: ReturnType<PromptBuilder["build"]>, fallback: DeckPlan) {
+  private async generateSlides(
+    request: GenerationRequest,
+    skill: SkillPackage,
+    outline: DeckPlan,
+    prompt: ReturnType<PromptBuilder["build"]>,
+    fallback: DeckPlan
+  ) {
     try {
       const deck = await this.provider.generateJson(request.apiSettings, [
         { role: "system", content: prompt.systemPrompt },
         { role: "user", content: this.promptBuilder.buildSlidePrompt(prompt, outline) }
       ]);
 
-      return normalizeSlides(deck, request.brief.pageCount, fallback);
+      return this.visualAgent.enrich(deck, request.brief.pageCount, fallback, request.brief, skill);
     } catch (error) {
       if (!config.allowModelFallback) {
         throw new Error(`生成逐页内容失败：${asErrorMessage(error)}`);
       }
 
-      return outline;
+      return this.visualAgent.enrich(outline, request.brief.pageCount, fallback, request.brief, skill);
     }
   }
 
@@ -182,7 +168,7 @@ export class JobService {
         "GeneratingSlides",
         outlineResult.usedFallback ? "模型接口暂不可用，正在使用本地结构化内容生成页面" : messageByStatus.GeneratingSlides
       );
-      const deck = await this.generateSlides(request, outlineResult.deck, prompt, fallback);
+      const deck = await this.generateSlides(request, skill, outlineResult.deck, prompt, fallback);
 
       this.setStatus(id, "Rendering");
       const rendered = await this.renderer.render(id, deck, request.brief, skill);

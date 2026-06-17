@@ -1,0 +1,75 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Length 4576 >>
+stream
+BT /F1 11 Tf 50 760 Td (海岳大模型：驱动企业智能化转型的核心引擎) Tj ET
+BT /F1 11 Tf 50 744 Td (浪潮数字企业 AI 赋能方案汇报) Tj ET
+BT /F1 11 Tf 50 728 Td (Topic: 海岳大模型) Tj ET
+BT /F1 11 Tf 50 712 Td (Audience: 客户中层) Tj ET
+BT /F1 11 Tf 50 696 Td (Pages: 8) Tj ET
+BT /F1 11 Tf 50 680 Td (1. 海岳大模型：驱动企业智能化转型的核心引擎) Tj ET
+BT /F1 11 Tf 50 664 Td (- 汇报人：浪潮数字企业专家团队) Tj ET
+BT /F1 11 Tf 50 648 Td (- 汇报对象：[客户公司名称] 管理层) Tj ET
+BT /F1 11 Tf 50 632 Td (- 日期：202X年X月X日) Tj ET
+BT /F1 11 Tf 50 616 Td (2. 汇报目录 CONTENTS) Tj ET
+BT /F1 11 Tf 50 600 Td (- 01 时代背景：企业智能化的挑战与机遇) Tj ET
+BT /F1 11 Tf 50 584 Td (- 02 核心引擎：海岳大模型的能力与架构) Tj ET
+BT /F1 11 Tf 50 568 Td (- 03 场景赋能：核心业务领域的AI落地实践) Tj ET
+BT /F1 11 Tf 50 552 Td (- 04 实施路径：稳健可靠的交付与服务保障) Tj ET
+BT /F1 11 Tf 50 536 Td (3. 企业智能化转型的痛点与破局之道) Tj ET
+BT /F1 11 Tf 50 520 Td (- 数据孤岛：海量业务数据沉淀，缺乏深度挖掘与智能决策支持。) Tj ET
+BT /F1 11 Tf 50 504 Td (- 自动化瓶颈：传统RPA受限规则，复杂认知型工作仍高度依赖人工。) Tj ET
+BT /F1 11 Tf 50 488 Td (- 模型水土不服：公有云大模型缺乏私有知识，存在数据安全与行业幻觉风险。) Tj ET
+BT /F1 11 Tf 50 472 Td (- 破局之道：亟需懂行业、懂企业、安全可控的专属企业级大模型。) Tj ET
+BT /F1 11 Tf 50 456 Td (4. 海岳大模型：懂行业、懂企业的专属AI底座) Tj ET
+BT /F1 11 Tf 50 440 Td (- 双引擎架构：融合通用大模型基础能力与浪潮行业/企业管理知识图谱。) Tj ET
+BT /F1 11 Tf 50 424 Td (- 企业级安全：支持私有化部署，数据不出域，提供细粒度权限管控与审计。) Tj ET
+BT /F1 11 Tf 50 408 Td (- 高精准低幻觉：结合RAG（检索增强）与Agent技术，确保输出契合业务逻辑。) Tj ET
+BT /F1 11 Tf 50 392 Td (- 敏捷开发微调：提供低代码Prompt工程，业务人员可轻松构建专属AI应用。) Tj ET
+BT /F1 11 Tf 50 376 Td (5. 核心业务场景的AI深度赋能) Tj ET
+BT /F1 11 Tf 50 360 Td (- 智能财务 \(ChatBI\)：自然语言对话生成分析报表，实现从‘人找数据’到‘数据找人’。) Tj ET
+BT /F1 11 Tf 50 344 Td (- 智慧供应链：预测市场需求波动，智能优化库存水位，自动生成采购建议与预警。) Tj ET
+BT /F1 11 Tf 50 328 Td (- 智能HR与知识：打造专属AI助手，秒级解答制度疑问，自动提取简历亮点与评估。) Tj ET
+BT /F1 11 Tf 50 312 Td (- 研发与制造：解析历史工单与设备日志，智能生成设备维保方案与工艺优化建议。) Tj ET
+BT /F1 11 Tf 50 296 Td (6. 标杆案例：某大型制造企业的智能化跃升) Tj ET
+BT /F1 11 Tf 50 280 Td (- 业务痛点：财务月结耗时长、供应链响应慢、内部知识检索效率低。) Tj ET
+BT /F1 11 Tf 50 264 Td (- 解决方案：私有化部署海岳大模型，接入ERP/OA，上线财务与供应链Agent。) Tj ET
+BT /F1 11 Tf 50 248 Td (- 财务提效：月结报告生成时间大幅缩短70%。) Tj ET
+BT /F1 11 Tf 50 232 Td (- 供应链优化：缺货率降低15%，IT/HR日常咨询自动解决率达85%。) Tj ET
+BT /F1 11 Tf 50 216 Td (7. 稳健可靠的交付与服务保障体系) Tj ET
+BT /F1 11 Tf 50 200 Td (- 敏捷交付：采用‘咨询规划-小步快跑-场景验证-全面推广’四步走策略。) Tj ET
+BT /F1 11 Tf 50 184 Td (- 数据治理：提供专业数据清洗与知识图谱构建，为大模型注入高质量‘燃料’。) Tj ET
+BT /F1 11 Tf 50 168 Td (- 持续运营：涵盖模型微调、Prompt库更新及效果评估，确保模型越用越聪明。) Tj ET
+BT /F1 11 Tf 50 152 Td (- 原厂保障：资深业务顾问+AI算法工程师联合驻场，提供7x24小时技术兜底。) Tj ET
+BT /F1 11 Tf 50 136 Td (8. 携手浪潮，共创企业智能化新未来) Tj ET
+BT /F1 11 Tf 50 120 Td (- 核心价值：重塑业务流程，提升核心竞争力，打造企业级AI战略资产。) Tj ET
+BT /F1 11 Tf 50 104 Td (- 下一步建议：启动2周‘AI场景共创工作坊’，梳理高价值试点并输出POC方案。) Tj ET
+BT /F1 11 Tf 50 88 Td (- 资源诉求：需业务骨干与IT接口人深度参与，保障数据开放与业务逻辑输入。) Tj ET
+BT /F1 11 Tf 50 72 Td (- 期待交流：感谢聆听，期待与您深入探讨！) Tj ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000000311 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+4939
+%%EOF

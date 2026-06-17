@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>浪潮海岳大模型：企业级AI智能底座</title>
+    <style>
+      :root {
+        color: #172033;
+        background: #eef2f5;
+        font-family: Inter, "Microsoft YaHei", Arial, sans-serif;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: #eef2f5; }
+      .deck { display: grid; gap: 20px; padding: 24px; }
+      .slide {
+        min-height: min(720px, calc(100vh - 48px));
+        border: 1px solid rgba(23, 32, 51, 0.12);
+        border-radius: 8px;
+        padding: 52px;
+        background:
+          linear-gradient(135deg, rgba(255,255,255,0.96), rgba(242,247,244,0.94)),
+          radial-gradient(circle at 84% 18%, rgba(42, 111, 151, 0.16), transparent 30%);
+        box-shadow: 0 20px 50px rgba(23, 32, 51, 0.08);
+      }
+      .cover {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background:
+          linear-gradient(135deg, rgba(255,255,255,0.98), rgba(232,241,247,0.95)),
+          linear-gradient(90deg, #2a6f97 0 8px, transparent 8px);
+      }
+      .slide-kicker {
+        color: #2a6f97;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0;
+        margin-bottom: 18px;
+      }
+      h1, h2 { letter-spacing: 0; margin: 0; color: #172033; }
+      h1 { max-width: 900px; font-size: 52px; line-height: 1.08; }
+      h2 { max-width: 900px; font-size: 38px; line-height: 1.14; }
+      .subtitle, .purpose {
+        max-width: 860px;
+        margin: 18px 0 0;
+        color: #4d5b6c;
+        font-size: 20px;
+        line-height: 1.6;
+      }
+      ul {
+        display: grid;
+        gap: 14px;
+        max-width: 880px;
+        margin: 34px 0;
+        padding-left: 24px;
+        font-size: 20px;
+        line-height: 1.55;
+      }
+      li::marker { color: #2a6f97; }
+      .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 34px;
+      }
+      .pill, .visual-hint {
+        border: 1px solid rgba(23, 32, 51, 0.14);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.76);
+        color: #445266;
+      }
+      .pill { padding: 10px 14px; }
+      .visual-hint {
+        max-width: 880px;
+        padding: 16px 18px;
+        font-size: 15px;
+      }
+      @media (max-width: 760px) {
+        .deck { padding: 12px; }
+        .slide { min-height: auto; padding: 28px; }
+        h1 { font-size: 36px; }
+        h2 { font-size: 28px; }
+        .subtitle, .purpose, ul { font-size: 17px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="deck">
+      <section class="slide cover">
+        <div class="slide-kicker">浪潮数字企业 · 中文</div>
+        <h1>浪潮海岳大模型：企业级AI智能底座</h1>
+        <p class="subtitle">面向客户中层管理者的技术价值汇报</p>
+        <div class="meta-row">
+          <span class="pill">客户中层</span>
+          <span class="pill">企业咨询汇报</span>
+          <span class="pill">LC_ppt_skill-main</span>
+        </div>
+      </section>
+      
+      <section class="slide">
+        <div class="slide-kicker">浪潮数字企业 · 01</div>
+        <h2>封面页</h2>
+        <p class="purpose">建立专业第一印象，明确汇报主体与受众定位</p>
+        <ul><li>浪潮数字企业 · 海岳大模型专题汇报</li><li>面向客户中层管理者的AI能力解读</li><li>2024年Q3技术价值沟通版</li><li>浪潮数字企业 AI产品部</li><li>副标：可信赖、可落地、可演进的企业大模型</li></ul>
+        <div class="visual-hint">深蓝渐变底（#0D48CE→#0E48CE），居中白色无衬线大标题+浅灰副标；右下角嵌入浪潮LOGO与‘Inspur Digital’英文标识</div>
+      </section>
+      <section class="slide">
+        <div class="slide-kicker">浪潮数字企业 · 02</div>
+        <h2>目录页</h2>
+        <p class="purpose">清晰锚定汇报逻辑，引导客户中层快速把握信息脉络</p>
+        <ul><li>01 现状之困：企业AI应用的典型瓶颈</li><li>02 海岳之解：为什么是‘企业级’大模型？</li><li>03 架构之实：三层可信技术体系</li><li>04 场景之用：开箱即用的行业智能组件</li><li>05 落地之效：已在3类客户验证的业务增益</li></ul>
+        <div class="visual-hint">白底，左侧竖排蓝色编号栏（01–07，#1D78FA），右侧对应7行精炼条目；编号栏顶部加细线分隔，整体采用微软雅黑常规字重</div>
+      </section>
+      <section class="slide">
+        <div class="slide-kicker">浪潮数字企业 · 03</div>
+        <h2>现状之困：企业AI应用的典型瓶颈</h2>
+        <p class="purpose">引发共鸣，确立客户中层真实关切的共性问题</p>
+        <ul><li>模型‘黑盒’难解释：业务决策缺乏可追溯依据</li><li>私有数据不敢喂：安全合规与知识资产保护存疑</li><li>场景适配成本高：每上线一个应用需重复调优与标注</li><li>IT系统难打通：AI能力无法嵌入ERP/OA/BI等主干流程</li><li>运维不可控：缺乏模型监控、版本回滚与权限分级机制</li></ul>
+        <div class="visual-hint">深蓝底（#0D48CE），白色文字；每条痛点前加橙色感叹号图标（#FF6B35，仅作强调，非主色）；避免图表，纯文本左对齐，行距1.5倍</div>
+      </section>
+      <section class="slide">
+        <div class="slide-kicker">浪潮数字企业 · 04</div>
+        <h2>海岳之解：为什么是‘企业级’大模型？</h2>
+        <p class="purpose">定义差异化价值，突出‘企业级’而非通用大模型的本质差异</p>
+        <ul><li>原生支持私有化部署与信创环境（麒麟V10/统信UOS+鲲鹏/海光）</li><li>内置企业知识治理引擎：自动构建、更新、审计领域知识图谱</li><li>提供模型可解释性套件（XAI Toolkit）：关键推理路径可视化回溯</li><li>预置20+行业Prompt模板库与微调沙箱，降低业务人员使用门槛</li><li>通过等保三级+金融级数据脱敏认证，满足央企及大型国企合规要求</li></ul>
+        <div class="visual-hint">白底；五项能力采用三列布局（第1、2项左列，3、4项中列，第5项右列），每项前缀蓝色圆点（#1D78FA）；标题区加青绿横线（#00A0A0）装饰</div>
+      </section>
+      <section class="slide">
+        <div class="slide-kicker">浪潮数字企业 · 05</div>
+        <h2>架构之实：三层可信技术体系</h2>
+        <p class="purpose">用结构化表达建立技术信任感，体现工程化落地能力</p>
+        <ul><li>基础层：全栈信创适配（芯片/OS/数据库/中间件）</li><li>能力层：多模态理解+知识增强生成+可控推理+安全防护四引擎</li><li>服务层：API网关+模型即服务（MaaS）平台+统一权限中心</li><li>所有层级通过浪潮云海OS统一纳管与可观测性监控</li><li>支持与客户现有AI开发平台（如ModelArts、飞桨EE）混合调度</li></ul>
+        <div class="visual-hint">左右图文布局：左60%为三层垂直架构示意图（深蓝框+亮蓝箭头+青绿节点图标），右40%为对应5条说明；架构图无文字标注，说明文字用微软雅黑14号</div>
+      </section>
+      <section class="slide">
+        <div class="slide-kicker">浪潮数字企业 · 06</div>
+        <h2>落地之效：已在3类客户验证的业务增益</h2>
+        <p class="purpose">用轻量化案例增强说服力，聚焦中层管理者关心的ROI与效率指标</p>
+        <ul><li>某省属能源集团：设备巡检报告生成效率提升300%，人工复核耗时下降65%</li><li>某全国性城商行：信贷尽调材料初筛准确率达92.7%，单笔处理时效缩短至4.2分钟</li><li>某制造业龙头：PLM系统智能问答响应准确率94.1%，工程师平均问题解决周期压缩40%</li><li>共性成果：AI应用上线周期从3个月缩短至14天内</li><li>全部案例均基于客户私有数据训练，未使用任何互联网公开语料</li></ul>
+        <div class="visual-hint">白底；采用四列能力卡式布局（前3条各占一列，后2条合并为第四列），每列顶部加小型行业ICON（能源/金融/制造/时钟/锁）；数据用亮蓝色（#1D78FA）突出</div>
+      </section>
+      <section class="slide">
+        <div class="slide-kicker">浪潮数字企业 · 07</div>
+        <h2>下一步：共建专属AI能力中心</h2>
+        <p class="purpose">推动行动转化，明确后续合作路径与客户可预期资源投入</p>
+        <ul><li>阶段一（1个月内）：联合开展AI就绪度评估与高价值场景识别工作坊</li><li>阶段二（2–3个月）：基于海岳基座，定制化构建1–2个业务智能体（Agent）</li><li>阶段三（持续）：接入客户知识库，启动模型持续学习与效果迭代</li><li>浪潮提供：专属客户成功经理+AI工程专家驻场支持+季度效果复盘机制</li><li>贵方建议：指定业务+IT双牵头人，开放1–2个典型业务系统测试接口</li></ul>
+        <div class="visual-hint">深蓝底（#0D48CE）；五条计划采用时间轴式左对齐排布，每条前缀白色数字徽章（01/02/03…）；末尾‘浪潮提供’与‘贵方建议’用青绿（#00A0A0）小标题区分</div>
+      </section>
+    </main>
+  </body>
+</html>

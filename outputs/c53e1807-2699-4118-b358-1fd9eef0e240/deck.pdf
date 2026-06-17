@@ -1,0 +1,75 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Length 4100 >>
+stream
+BT /F1 11 Tf 50 760 Td (浪潮海岳大模型：企业级AI智能底座) Tj ET
+BT /F1 11 Tf 50 744 Td (面向客户中层管理者的技术价值汇报) Tj ET
+BT /F1 11 Tf 50 728 Td (Topic: 介绍浪潮海岳大模型) Tj ET
+BT /F1 11 Tf 50 712 Td (Audience: 客户中层) Tj ET
+BT /F1 11 Tf 50 696 Td (Pages: 7) Tj ET
+BT /F1 11 Tf 50 680 Td (1. 封面页) Tj ET
+BT /F1 11 Tf 50 664 Td (- 浪潮数字企业 · 海岳大模型专题汇报) Tj ET
+BT /F1 11 Tf 50 648 Td (- 面向客户中层管理者的AI能力解读) Tj ET
+BT /F1 11 Tf 50 632 Td (- 2024年Q3技术价值沟通版) Tj ET
+BT /F1 11 Tf 50 616 Td (- 浪潮数字企业 AI产品部) Tj ET
+BT /F1 11 Tf 50 600 Td (- 副标：可信赖、可落地、可演进的企业大模型) Tj ET
+BT /F1 11 Tf 50 584 Td (2. 目录页) Tj ET
+BT /F1 11 Tf 50 568 Td (- 01 现状之困：企业AI应用的典型瓶颈) Tj ET
+BT /F1 11 Tf 50 552 Td (- 02 海岳之解：为什么是‘企业级’大模型？) Tj ET
+BT /F1 11 Tf 50 536 Td (- 03 架构之实：三层可信技术体系) Tj ET
+BT /F1 11 Tf 50 520 Td (- 04 场景之用：开箱即用的行业智能组件) Tj ET
+BT /F1 11 Tf 50 504 Td (- 05 落地之效：已在3类客户验证的业务增益) Tj ET
+BT /F1 11 Tf 50 488 Td (3. 现状之困：企业AI应用的典型瓶颈) Tj ET
+BT /F1 11 Tf 50 472 Td (- 模型‘黑盒’难解释：业务决策缺乏可追溯依据) Tj ET
+BT /F1 11 Tf 50 456 Td (- 私有数据不敢喂：安全合规与知识资产保护存疑) Tj ET
+BT /F1 11 Tf 50 440 Td (- 场景适配成本高：每上线一个应用需重复调优与标注) Tj ET
+BT /F1 11 Tf 50 424 Td (- IT系统难打通：AI能力无法嵌入ERP/OA/BI等主干流程) Tj ET
+BT /F1 11 Tf 50 408 Td (- 运维不可控：缺乏模型监控、版本回滚与权限分级机制) Tj ET
+BT /F1 11 Tf 50 392 Td (4. 海岳之解：为什么是‘企业级’大模型？) Tj ET
+BT /F1 11 Tf 50 376 Td (- 原生支持私有化部署与信创环境（麒麟V10/统信UOS+鲲鹏/海光）) Tj ET
+BT /F1 11 Tf 50 360 Td (- 内置企业知识治理引擎：自动构建、更新、审计领域知识图谱) Tj ET
+BT /F1 11 Tf 50 344 Td (- 提供模型可解释性套件（XAI Toolkit）：关键推理路径可视化回溯) Tj ET
+BT /F1 11 Tf 50 328 Td (- 预置20+行业Prompt模板库与微调沙箱，降低业务人员使用门槛) Tj ET
+BT /F1 11 Tf 50 312 Td (- 通过等保三级+金融级数据脱敏认证，满足央企及大型国企合规要求) Tj ET
+BT /F1 11 Tf 50 296 Td (5. 架构之实：三层可信技术体系) Tj ET
+BT /F1 11 Tf 50 280 Td (- 基础层：全栈信创适配（芯片/OS/数据库/中间件）) Tj ET
+BT /F1 11 Tf 50 264 Td (- 能力层：多模态理解+知识增强生成+可控推理+安全防护四引擎) Tj ET
+BT /F1 11 Tf 50 248 Td (- 服务层：API网关+模型即服务（MaaS）平台+统一权限中心) Tj ET
+BT /F1 11 Tf 50 232 Td (- 所有层级通过浪潮云海OS统一纳管与可观测性监控) Tj ET
+BT /F1 11 Tf 50 216 Td (- 支持与客户现有AI开发平台（如ModelArts、飞桨EE）混合调度) Tj ET
+BT /F1 11 Tf 50 200 Td (6. 落地之效：已在3类客户验证的业务增益) Tj ET
+BT /F1 11 Tf 50 184 Td (- 某省属能源集团：设备巡检报告生成效率提升300%，人工复核耗时下降65%) Tj ET
+BT /F1 11 Tf 50 168 Td (- 某全国性城商行：信贷尽调材料初筛准确率达92.7%，单笔处理时效缩短至4.2分钟) Tj ET
+BT /F1 11 Tf 50 152 Td (- 某制造业龙头：PLM系统智能问答响应准确率94.1%，工程师平均问题解决周期压缩40%) Tj ET
+BT /F1 11 Tf 50 136 Td (- 共性成果：AI应用上线周期从3个月缩短至14天内) Tj ET
+BT /F1 11 Tf 50 120 Td (- 全部案例均基于客户私有数据训练，未使用任何互联网公开语料) Tj ET
+BT /F1 11 Tf 50 104 Td (7. 下一步：共建专属AI能力中心) Tj ET
+BT /F1 11 Tf 50 88 Td (- 阶段一（1个月内）：联合开展AI就绪度评估与高价值场景识别工作坊) Tj ET
+BT /F1 11 Tf 50 72 Td (- 阶段二（2–3个月）：基于海岳基座，定制化构建1–2个业务智能体（Agent）) Tj ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000000311 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+4463
+%%EOF

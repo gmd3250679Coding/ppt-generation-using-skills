@@ -1,0 +1,73 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Length 4147 >>
+stream
+BT /F1 11 Tf 50 760 Td (浪潮海岳大模型：企业智能化升级的核心引擎) Tj ET
+BT /F1 11 Tf 50 744 Td (面向客户中层的AI能力价值汇报) Tj ET
+BT /F1 11 Tf 50 728 Td (Topic: 浪潮海岳大模型) Tj ET
+BT /F1 11 Tf 50 712 Td (Audience: 客户中层) Tj ET
+BT /F1 11 Tf 50 696 Td (Pages: 8) Tj ET
+BT /F1 11 Tf 50 680 Td (1. 封面：智启新程，岳立潮头) Tj ET
+BT /F1 11 Tf 50 664 Td (- 浪潮数字 · 海岳大模型客户价值汇报) Tj ET
+BT /F1 11 Tf 50 648 Td (- 面向企业中层管理者的AI决策支持方案) Tj ET
+BT /F1 11 Tf 50 632 Td (- 2024年Q3版) Tj ET
+BT /F1 11 Tf 50 616 Td (2. 目录：四步构建AI认知闭环) Tj ET
+BT /F1 11 Tf 50 600 Td (- 01 现状之困：数字化转型中的AI落地断点) Tj ET
+BT /F1 11 Tf 50 584 Td (- 02 海岳之能：企业级大模型的核心能力图谱) Tj ET
+BT /F1 11 Tf 50 568 Td (- 03 落地之径：从通用能力到业务场景的转化方法) Tj ET
+BT /F1 11 Tf 50 552 Td (- 04 共赢之策：联合推进、分阶段见效的合作模式) Tj ET
+BT /F1 11 Tf 50 536 Td (3. 现状之困：为什么AI项目常陷‘高投入、低见效’？) Tj ET
+BT /F1 11 Tf 50 520 Td (- 业务部门提需求，但缺乏AI可解问题的精准识别机制) Tj ET
+BT /F1 11 Tf 50 504 Td (- IT部门建平台，却难对接真实业务流程与数据孤岛) Tj ET
+BT /F1 11 Tf 50 488 Td (- 采购模型服务后，面临提示工程弱、微调成本高、安全合规难) Tj ET
+BT /F1 11 Tf 50 472 Td (- 管理层期待‘速赢’，但缺乏可衡量的中期价值锚点) Tj ET
+BT /F1 11 Tf 50 456 Td (4. 海岳之能：不止于大模型，更是企业AI操作系统) Tj ET
+BT /F1 11 Tf 50 440 Td (- 全栈自研：从算力底座、模型训练到行业应用全链路可控) Tj ET
+BT /F1 11 Tf 50 424 Td (- 领域增强：预置政务、金融、制造等12类行业知识图谱与语料) Tj ET
+BT /F1 11 Tf 50 408 Td (- 安全可信：通过等保三级、商用密码认证，支持私有化部署与数据不出域) Tj ET
+BT /F1 11 Tf 50 392 Td (- 开箱即用：提供Prompt Studio、Fine-tuning Portal、RAG工作台三大低代码工具) Tj ET
+BT /F1 11 Tf 50 376 Td (5. 落地之径：三阶演进，让AI价值可测、可见、可复制) Tj ET
+BT /F1 11 Tf 50 360 Td (- L1 智能提效：文档自动摘要、会议纪要生成、知识库问答（2周上线）) Tj ET
+BT /F1 11 Tf 50 344 Td (- L2 流程增强：合同智能审查、工单自动分派、BI自然语言查询（6周交付）) Tj ET
+BT /F1 11 Tf 50 328 Td (- L3 场景重构：预测性设备运维、供应链风险模拟、个性化客户洞察（按需定制）) Tj ET
+BT /F1 11 Tf 50 312 Td (6. 实践印证：已在XX省政务云、YY集团制造中枢稳定运行) Tj ET
+BT /F1 11 Tf 50 296 Td (- 政务场景：政策文件解读效率提升300%，基层填报耗时下降65%) Tj ET
+BT /F1 11 Tf 50 280 Td (- 制造场景：设备故障预警准确率达92.7%，非计划停机减少22%) Tj ET
+BT /F1 11 Tf 50 264 Td (- 共性成果：平均缩短AI应用开发周期至传统方式的1/5，IT运维人力节省40%) Tj ET
+BT /F1 11 Tf 50 248 Td (7. 共赢之策：轻启动、快验证、稳扩展的合作框架) Tj ET
+BT /F1 11 Tf 50 232 Td (- 联合成立‘AI价值实现小组’：客户业务骨干+浪潮解决方案专家) Tj ET
+BT /F1 11 Tf 50 216 Td (- 首期聚焦1个高价值、易见效的L1场景，2周内完成POC验证) Tj ET
+BT /F1 11 Tf 50 200 Td (- 提供《海岳AI就绪度评估》工具包，量化当前基础与改进路径) Tj ET
+BT /F1 11 Tf 50 184 Td (- 阶梯式服务包：含模型调优、场景迁移、持续运营三类可选模块) Tj ET
+BT /F1 11 Tf 50 168 Td (8. 总结：让AI真正成为您的管理杠杆) Tj ET
+BT /F1 11 Tf 50 152 Td (- 海岳不是技术炫技，而是为企业中层设计的‘决策增强引擎’) Tj ET
+BT /F1 11 Tf 50 136 Td (- 从‘能用’到‘好用’再到‘爱用’，我们提供全周期护航) Tj ET
+BT /F1 11 Tf 50 120 Td (- 下一步建议：本周内开展1次免费《AI就绪度快评》) Tj ET
+BT /F1 11 Tf 50 104 Td (- Q&A：您最希望AI优先解决的3个管理难题是？) Tj ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000000311 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+4510
+%%EOF

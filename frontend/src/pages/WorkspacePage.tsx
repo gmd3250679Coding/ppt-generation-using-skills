@@ -3,6 +3,7 @@ import { GenerationBriefForm } from "../components/GenerationBriefForm";
 import { JobProgress } from "../components/JobProgress";
 import { PreviewPanel } from "../components/PreviewPanel";
 import { ProviderSettings } from "../components/ProviderSettings";
+import { PptShowcaseCarousel } from "../components/PptShowcaseCarousel";
 import { SkillUploader } from "../components/SkillUploader";
 import { useGenerationJob } from "../hooks/useGenerationJob";
 import type { ApiSettings, GenerationBrief, SkillUpload } from "../types/generation";
@@ -14,10 +15,10 @@ const defaultSkill: SkillUpload = {
 };
 
 const defaultApiSettings: ApiSettings = {
-  provider: "openai",
+  provider: "compatible",
   apiKey: "",
-  endpoint: "",
-  model: "gpt-4.1-mini",
+  endpoint: "https://dashscope.aliyuncs.com/compatible-mode/v1",
+  model: "qwen-plus",
   deployment: "",
   apiVersion: ""
 };
@@ -65,7 +66,7 @@ export function WorkspacePage() {
 
         <div className="security-note">
           <ShieldCheck aria-hidden="true" />
-          <span>密钥仅随本次请求提交到本地服务</span>
+          <span>支持百炼、混元、DeepSeek 等兼容接口，密钥仅提交到本地服务</span>
         </div>
       </header>
 
@@ -75,13 +76,16 @@ export function WorkspacePage() {
           <ProviderSettings value={apiSettings} onChange={setApiSettings} />
         </div>
 
-        <GenerationBriefForm
-          value={brief}
-          canSubmit={canSubmit}
-          isSubmitting={isSubmitting}
-          onChange={setBrief}
-          onSubmit={submitJob}
-        />
+        <div className="center-column">
+          <PptShowcaseCarousel />
+          <GenerationBriefForm
+            value={brief}
+            canSubmit={canSubmit}
+            isSubmitting={isSubmitting}
+            onChange={setBrief}
+            onSubmit={submitJob}
+          />
+        </div>
 
         <div className="right-column">
           <JobProgress job={job} error={error} onReset={reset} />

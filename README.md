@@ -1,6 +1,6 @@
 # PPT Skill Workspace
 
-一个运行在本地的 PPT Skill Web 工作台。用户可以在 React 页面上传 PPT Skill，填写模型 API Key 和生成需求，由本地后端调用 OpenAI / Azure OpenAI / OpenAI 兼容接口生成演示稿，并在网页中预览、下载结果。
+一个运行在本地的 PPT Skill Web 工作台。用户可以在 React 页面上传 PPT Skill，填写模型 API Key 和生成需求，由本地后端调用阿里百炼、腾讯混元、DeepSeek 等国内常见 OpenAI 兼容接口，也可以接入 OpenAI / Azure OpenAI，生成演示稿并在网页中预览、下载结果。
 
 ## 项目结构
 
@@ -20,7 +20,7 @@ ppt_generation_using_skills/
 
 - Node.js 20 或更高版本
 - npm
-- 可用的模型 API Key
+- 可用的模型 API Key，例如阿里百炼、腾讯混元、DeepSeek、OpenAI 或 Azure OpenAI
 
 前端使用 React 19、Vite 8；后端使用 Express、TypeScript、pptxgenjs。
 
@@ -58,12 +58,6 @@ ALLOW_MODEL_FALLBACK=false
 
 ```env
 FRONTEND_ORIGIN=http://localhost:5173,http://localhost:5174,http://localhost:4173
-```
-
-`ALLOW_MODEL_FALLBACK=false` 表示模型接口调用失败时，作业会进入 `Failed`，前端会展示真实错误。只有在你明确希望无模型也生成本地结构化示例内容时，才改成：
-
-```env
-ALLOW_MODEL_FALLBACK=true
 ```
 
 开发模式下，前端默认请求相对路径 `/api`，由 Vite 代理到 `http://localhost:4000`，这样不会触发浏览器跨域问题。
@@ -111,11 +105,11 @@ http://localhost:5173
    - `.zip` 包内必须包含 `SKILL.md`
    - 可以包含 `templates/`、`assets/` 等资源目录
 2. 填写 Skill 名称。
-3. 选择服务商：
-   - `OpenAI`
-   - `Azure OpenAI`
-   - `OpenAI 兼容接口`
-4. 输入 API Key、模型名、接口地址等参数。
+3. 选择服务商。国内平台通常选择 `国内/通用 OpenAI 兼容接口`：
+   - 阿里百炼、腾讯混元、DeepSeek 等 OpenAI 兼容接口
+   - OpenAI 官方接口
+   - Azure OpenAI
+4. 输入 API Key、模型名、接口地址等参数。国内平台通常需要填写平台提供的 base URL。
 5. 填写公司名、主题、受众、页数、风格、语气和补充材料。
 6. 点击生成，在右侧查看进度和预览。
 7. 生成完成后可下载：
@@ -204,12 +198,14 @@ npm run preview  # 预览构建产物
 skills/<skill-name>/SKILL.md
 ```
 
-### OpenAI 兼容接口如何填写
+### 国内/通用 OpenAI 兼容接口如何填写
 
-选择“OpenAI 兼容接口”后，接口地址填写兼容服务的 base URL，例如：
+选择“国内/通用 OpenAI 兼容接口”后，接口地址填写兼容服务的 base URL。常见示例：
 
 ```text
-https://your-compatible-api.example.com/v1
+阿里百炼：https://dashscope.aliyuncs.com/compatible-mode/v1
+腾讯混元：https://api.hunyuan.cloud.tencent.com/v1
+DeepSeek：https://api.deepseek.com
 ```
 
 后端会调用：
@@ -217,6 +213,21 @@ https://your-compatible-api.example.com/v1
 ```text
 <base-url>/chat/completions
 ```
+
+例如选择阿里百炼时：
+
+- 接口地址：`https://dashscope.aliyuncs.com/compatible-mode/v1`
+- 模型：`qwen-plus`、`qwen-max` 或百炼控制台中可用的兼容模型名
+
+选择 DeepSeek 时：
+
+- 接口地址：`https://api.deepseek.com`
+- 模型：`deepseek-chat` 或 DeepSeek 控制台中可用的模型名
+
+选择腾讯混元时：
+
+- 接口地址：`https://api.hunyuan.cloud.tencent.com/v1`
+- 模型：填写混元控制台中支持 OpenAI 兼容调用的模型名
 
 ### Azure OpenAI 如何填写
 

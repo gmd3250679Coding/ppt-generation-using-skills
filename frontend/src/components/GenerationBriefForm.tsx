@@ -126,7 +126,7 @@ export function GenerationBriefForm({
           value={value.materials}
           onChange={(event) => update({ materials: event.target.value })}
           placeholder="粘贴业务背景、数据、目录草稿或必须覆盖的要点"
-          rows={7}
+          rows={4}
         />
       </label>
 

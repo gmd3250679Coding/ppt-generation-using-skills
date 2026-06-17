@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>海岳大模型：赋能数字企业智能化跃迁</title>
+    <style>
+      :root {
+        --bg: #FFFFFF;
+        --surface: #F8FAFF;
+        --primary: #0D48CE;
+        --secondary: #1D78FA;
+        --accent: #00A0A0;
+        --ink: #2E3A59;
+        --muted: #6C7A9F;
+        color: var(--ink);
+        background: #eef2f5;
+        font-family: Microsoft YaHei, Inter, "Microsoft YaHei", Arial, sans-serif;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: #eef2f5; }
+      .deck { display: grid; gap: 20px; padding: 24px; }
+      .slide {
+        position: relative;
+        min-height: min(720px, calc(100vh - 48px));
+        overflow: hidden;
+        border: 1px solid rgba(20, 33, 61, 0.12);
+        border-radius: 8px;
+        padding: 44px 52px 38px;
+        background: linear-gradient(135deg, var(--surface), var(--bg));
+        box-shadow: 0 20px 50px rgba(20, 33, 61, 0.09);
+      }
+      .slide::before {
+        content: "";
+        position: absolute;
+        inset: 0 auto auto 0;
+        width: 100%;
+        height: 8px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+      }
+      .cover {
+        display: grid;
+        grid-template-columns: 0.9fr 2fr;
+        gap: 44px;
+        align-items: center;
+        background: linear-gradient(90deg, var(--primary) 0 24%, var(--accent) 24% calc(24% + 10px), var(--bg) calc(24% + 10px));
+      }
+      .cover-brand { color: #fff; align-self: stretch; display: flex; flex-direction: column; justify-content: space-between; padding: 8px 0; }
+      .cover-main { max-width: 920px; }
+      .slide-kicker {
+        color: var(--primary);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0;
+        margin-bottom: 14px;
+      }
+      .cover .slide-kicker { color: #fff; }
+      h1, h2 {
+        letter-spacing: 0;
+        margin: 0;
+        color: var(--ink);
+        font-family: Microsoft YaHei, Microsoft YaHei, Arial, sans-serif;
+      }
+      h1 { max-width: 900px; font-size: 54px; line-height: 1.05; }
+      h2 { max-width: 940px; font-size: 34px; line-height: 1.12; }
+      .subtitle, .purpose {
+        max-width: 880px;
+        margin: 14px 0 0;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.5;
+      }
+      .content-block {
+        display: grid;
+        grid-template-columns: minmax(300px, 0.9fr) minmax(320px, 1.1fr);
+        grid-template-areas:
+          "bullets visual"
+          "diagram visual"
+          "metrics metrics";
+        gap: 18px;
+        margin-top: 24px;
+      }
+      ul {
+        grid-area: bullets;
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding-left: 21px;
+        font-size: 18px;
+        line-height: 1.45;
+      }
+      li::marker { color: var(--accent); }
+      .key-message {
+        margin-top: 22px;
+        max-width: 760px;
+        border-left: 6px solid var(--accent);
+        padding-left: 16px;
+        color: var(--ink);
+        font-family: Microsoft YaHei, Microsoft YaHei, Arial, sans-serif;
+        font-size: 23px;
+        line-height: 1.28;
+        font-weight: 800;
+      }
+      .diagram {
+        grid-area: diagram;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 10px;
+      }
+      .node, .metric {
+        border: 1px solid rgba(20, 33, 61, 0.1);
+        border-radius: 8px;
+        background: rgba(255,255,255,0.8);
+      }
+      .node { padding: 14px; }
+      .node b { display: block; color: var(--accent); font-size: 12px; margin-bottom: 8px; }
+      .node span { font-weight: 700; }
+      .metrics {
+        grid-area: metrics;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+      .metric { padding: 14px 16px; }
+      .metric strong { display: block; color: var(--primary); font-size: 30px; line-height: 1; }
+      .metric span { display: block; margin-top: 8px; font-weight: 700; }
+      .metric small { display: block; margin-top: 5px; color: var(--muted); }
+      .visual {
+        grid-area: visual;
+        min-height: 280px;
+        margin: 0;
+        padding: 24px;
+        position: relative;
+        display: grid;
+        align-content: end;
+        overflow: hidden;
+        border-radius: 8px;
+        background:
+          radial-gradient(circle at 78% 18%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 32%),
+          linear-gradient(135deg, rgba(255,255,255,0.92), color-mix(in srgb, var(--primary) 12%, var(--surface)));
+        border: 1px solid rgba(20, 33, 61, 0.1);
+      }
+      .visual-orbit { position: absolute; inset: 20px; }
+      .visual-orbit span {
+        position: absolute;
+        border-radius: 999px;
+        background: var(--primary);
+        opacity: 0.14;
+      }
+      .visual-orbit span:nth-child(1) { width: 180px; height: 180px; right: 14%; top: 8%; }
+      .visual-orbit span:nth-child(2) { width: 96px; height: 96px; left: 12%; top: 28%; background: var(--accent); opacity: 0.22; }
+      .visual-orbit span:nth-child(3) { width: 280px; height: 120px; right: -10%; bottom: 12%; border-radius: 60px; background: var(--secondary); opacity: 0.14; }
+      figcaption { position: relative; z-index: 1; max-width: 82%; }
+      figcaption strong { display: block; font-size: 22px; line-height: 1.25; }
+      figcaption small { display: block; margin-top: 8px; color: var(--muted); }
+      .visual-tags {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 18px;
+      }
+      .visual-tags em {
+        font-style: normal;
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.76);
+        color: var(--ink);
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .visual-hint {
+        position: absolute;
+        left: 52px;
+        right: 52px;
+        bottom: 18px;
+        margin: 0;
+        color: var(--muted);
+        font-size: 11px;
+        line-height: 1.35;
+      }
+      .layout-insight-cards .content-block,
+      .layout-metric-dashboard .content-block {
+        grid-template-columns: 1fr 0.72fr;
+      }
+      .layout-process-flow .content-block,
+      .layout-timeline .content-block,
+      .layout-closing .content-block {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "diagram"
+          "bullets"
+          "metrics"
+          "visual";
+      }
+      .layout-image-focus .content-block {
+        grid-template-columns: 0.78fr 1.22fr;
+      }
+      .meta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+      .pill {
+        border: 1px solid rgba(255,255,255,0.5);
+        border-radius: 8px;
+        padding: 10px 14px;
+        color: #fff;
+      }
+      @media (max-width: 760px) {
+        .deck { padding: 12px; }
+        .slide { min-height: auto; padding: 28px; }
+        .cover, .content-block { display: block; }
+        .cover { background: linear-gradient(135deg, var(--primary), var(--secondary)); }
+        .cover-main { margin-top: 34px; }
+        .cover h1, .cover .subtitle { color: #fff; }
+        h1 { font-size: 36px; }
+        h2 { font-size: 27px; }
+        .subtitle, .purpose, ul { font-size: 16px; }
+        .key-message { font-size: 20px; }
+        .visual, .diagram, .metrics { margin-top: 18px; }
+        .metrics { grid-template-columns: 1fr; }
+        .visual-hint { position: static; margin-top: 18px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="deck">
+      <section class="slide cover">
+        <div class="cover-brand">
+          <div class="slide-kicker">浪潮数字企业 · 中文</div>
+          <div class="meta-row">
+            <span class="pill">客户中层</span>
+            <span class="pill">企业咨询汇报</span>
+          </div>
+        </div>
+        <div class="cover-main">
+          <h1>海岳大模型：赋能数字企业智能化跃迁</h1>
+          <p class="subtitle">浪潮数字企业 · 客户中层汇报方案</p>
+          <div class="metrics">
+        <div class="metric">
+          <strong>9</strong>
+          <span>页面数量</span>
+          <small>slides</small>
+        </div>
+        <div class="metric">
+          <strong>1</strong>
+          <span>视觉系统</span>
+          <small>Inspur Haiyue Corporate</small>
+        </div>
+        <div class="metric">
+          <strong>5</strong>
+          <span>布局类型</span>
+          <small>种</small>
+        </div></div>
+        </div>
+      </section>
+      
+    <section class="slide layout-hero-statement">
+      <header>
+        <div class="slide-kicker">浪潮数字企业 · 01</div>
+        <h2>封面：智启新程，岳立潮头</h2>
+        <p class="purpose">建立品牌认知与汇报基调</p>
+      </header>
+      <div class="key-message">海岳大模型是浪潮数字企业面向政企客户的全栈AI底座</div>
+      <div class="content-block">
+        <ul><li>浪潮数字企业自主研发</li><li>面向中台化、服务化、智能化演进需求</li><li>已通过国家网信办生成式AI备案</li></ul>
+        <div class="diagram diagram-process"><div class="node"><b>01</b><span>浪潮数字企业自主研发</span></div><div class="node"><b>02</b><span>面向中台化、服务化、智能化演进需求</span></div><div class="node"><b>03</b><span>已通过国家网信办生成式AI备案</span></div><div class="node"><b>04</b><span>浪潮数字企业自主研发</span></div></div>
+        <div class="metrics">
+        <div class="metric">
+          <strong>3</strong>
+          <span>核心要点</span>
+          <small>项</small>
+        </div>
+        <div class="metric">
+          <strong>P1</strong>
+          <span>页面定位</span>
+          <small>结构页</small>
+        </div></div>
+        <figure class="visual" aria-label="海岳大模型品牌视觉符号：山岳与数据流融合">
+    <div class="visual-orbit">
+      <span></span><span></span><span></span>
+    </div>
+    <figcaption>
+      <strong>海岳大模型品牌视觉符号：山岳与数据流融合</strong>
+      <small>Inspur Haiyue Corporate</small>
+    </figcaption>
+    <div class="visual-tags"><em>浪潮数字企业自主研发</em><em>面向中台化、服务化、智能化演进需求</em><em>已通过国家网信办生成式AI备案</em><em>浪潮数字企业自主研发</em></div>
+  </figure>
+      </div>
+      <p class="visual-hint">居中竖排标题+副标；右下角嵌入浪潮Logo与‘海岳HaiYue’英文标识；背景为极浅蓝灰渐变（F8FAFF→FFFFFF）</p>
+    </section>
+    <section class="slide layout-two-column">
+      <header>
+        <div class="slide-kicker">浪潮数字企业 · 02</div>
+        <h2>目录：四维驱动，价值闭环</h2>
+        <p class="purpose">结构化呈现汇报逻辑，降低认知负荷</p>
+      </header>
+      <div class="key-message">从问题出发，经方案、实践到协同，形成可验证的价值闭环</div>
+      <div class="content-block">
+        <ul><li>01 现状之困：业务智能化卡点在哪？</li><li>02 海岳之能：为什么是可靠的选择？</li><li>03 落地之径：如何快速嵌入您的工作流？</li><li>04 共建之策：浪潮如何持续支撑您？</li></ul>
+        <div class="diagram diagram-process"><div class="node"><b>01</b><span>现状之困：业务智能化卡点在哪？</span></div><div class="node"><b>02</b><span>海岳之能：为什么是可靠的选择？</span></div><div class="node"><b>03</b><span>落地之径：如何快速嵌入您的工作流？</span></div><div class="node"><b>04</b><span>共建之策：浪潮如何持续支撑您？</span></div></div>
+        <div class="metrics">
+        <div class="metric">
+          <strong>4</strong>
+          <span>核心要点</span>
+          <small>项</small>
+        </div>
+        <div class="metric">
+          <strong>P2</strong>
+          <span>页面定位</span>
+          <small>结构页</small>
+        </div></div>
+        <figure class="visual" aria-label="目录四维图标：问题、能力、路径、协同">
+    <div class="visual-orbit">
+      <span></span><span></span><span></span>
+    </div>
+    <figcaption>
+      <strong>目录四维图标：问题、能力、路径、协同</strong>
+      <small>Inspur Haiyue Corporate</small>
+    </figcaption>
+    <div class="visual-tags"><em>现状之困：业务智能化卡点在哪？</em><em>海岳之能：为什么是可靠的选择？</em><em>落地之径：如何快速嵌入您的工作流？</em><em>共建之策：浪潮如何持续支撑您？</em></div>
+  </figure>
+      </div>
+      <p class="visual-hint">左侧竖排编号01–04（primary色），右侧对应四句短标题；每项含1个微图标（齿轮/芯片/路径/握手），图标色统一为primary</p>
+    </section>
+    <section class="slide layout-insight-cards">
+      <header>
+        <div class="slide-kicker">浪潮数字企业 · 03</div>
+        <h2>现状之困：中层管理者的三大断点</h2>
+        <p class="purpose">引发共鸣，锚定客户真实痛点</p>
+      </header>
+      <div class="key-message">数据孤岛、工具割裂、AI应用碎片化，制约决策响应与执行穿透力</div>
+      <div class="content-block">
+        <ul><li>跨系统数据难打通，报表生成平均耗时3.2小时/周</li><li>现有AI工具无法对接OA/ERP等核心业务系统</li><li>一线员工AI使用率不足17%，缺乏场景化引导</li></ul>
+        <div class="diagram diagram-process"><div class="node"><b>01</b><span>跨系统数据难打通</span></div><div class="node"><b>02</b><span>现有AI工具无法对接OA/ERP等核心业务系统</span></div><div class="node"><b>03</b><span>一线员工AI使用率不足17%</span></div><div class="node"><b>04</b><span>跨系统数据难打通</span></div></div>
+        <div class="metrics">
+        <div class="metric">
+          <strong>3.2h/周</strong>
+          <span>报表耗时</span>
+          <small>某省政务平台抽样统计</small>
+        </div>
+        <div class="metric">
+          <strong>&lt;12%</strong>
+          <span>系统对接率</span>
+          <small>主流AI工具与ERP/OA兼容率</small>
+        </div>
+        <div class="metric">
+          <strong>17%</strong>
+          <span>员工使用率</span>
+          <small>制造业客户AI助手月活占比</small>
+        </div></div>
+        <figure class="visual" aria-label="中层管理三大断点量化数据图">
+    <div class="visual-orbit">
+      <span></span><span></span><span></span>
+    </div>
+    <figcaption>
+      <strong>中层管理三大断点量化数据图</strong>
+      <small>Inspur Haiyue Corporate</small>
+    </figcaption>
+    <div class="visual-tags"><em>跨系统数据难打通</em><em>现有AI工具无法对接OA/ERP等核心业务系统</em><em>一线员工AI使用率不足17%</em><em>跨系统数据难打通</em></div>
+  </figure>
+      </div>
+      <p class="visual-hint">三列并置「断点卡片」，每张卡片含1个红色警示图标（⚠️）+痛点短句+量化数据标签；卡片底色为surface（F8FAFF），边框1px solid muted</p>
+    </section>
+    <section class="slide layout-process-flow">
+      <header>
+        <div class="slide-kicker">浪潮数字企业 · 04</div>
+        <h2>海岳之能：全栈可控的AI原生引擎</h2>
+        <p class="purpose">建立技术信任，突出差异化优势</p>
+      </header>
+      <div class="key-message">唯一支持私有化部署+行业知识蒸馏+低代码编排的国产大模型底座</div>
+      <div class="content-block">
+        <ul><li>100B+参数规模，中文理解与生成能力达行业SOTA</li><li>支持GPU/CPU混合推理，国产芯片适配率达100%</li><li>提供Prompt Studio与Agent Flow双低代码平台</li></ul>
+        <div class="diagram diagram-architecture"><div class="node"><b>01</b><span>基础模型层：100B+参数</span></div><div class="node"><b>02</b><span>行业增强层：政务/制造/能源知识蒸馏</span></div><div class="node"><b>03</b><span>应用编排层：Prompt Studio + Ag</span></div><div class="node"><b>04</b><span>国产芯片适配率：100%</span></div><div class="node"><b>05</b><span>混合推理支持：GPU/CPU</span></div></div>
+        <div class="metrics">
+        <div class="metric">
+          <strong>3</strong>
+          <span>核心要点</span>
+          <small>项</small>
+        </div>
+        <div class="metric">
+          <strong>P4</strong>
+          <span>页面定位</span>
+          <small>结构页</small>
+        </div></div>
+        <figure class="visual" aria-label="海岳大模型三层架构示意图">
+    <div class="visual-orbit">
+      <span></span><span></span><span></span>
+    </div>
+    <figcaption>
+      <strong>海岳大模型三层架构示意图</strong>
+      <small>Inspur Haiyue Corporate</small>
+    </figcaption>
+    <div class="visual-tags"><em>基础模型层：100B+参数</em><em>行业增强层：政务/制造/能源知识蒸馏</em><em>应用编排层：Prompt Studio + Ag</em><em>国产芯片适配率：100%</em></div>
+  </figure>
+      </div>
+      <p class="visual-hint">中心架构图：三层同心圆（基础模型层→行业增强层→应用编排层），每层标注核心能力关键词；外圈环绕3个盾牌图标（安全/可控/合规）</p>
+    </section>
+    <section class="slide layout-insight-cards">
+      <header>
+        <div class="slide-kicker">浪潮数字企业 · 05</div>
+        <h2>能力矩阵：不止于对话，更懂您的业务</h2>
+        <p class="purpose">具象化能力，消除‘大模型=聊天工具’误解</p>
+      </header>
+      <div class="key-message">覆盖知识管理、流程自动化、智能决策三大业务域的12类开箱即用能力</div>
+      <div class="content-block">
+        <ul><li>知识中枢：自动构建部门知识图谱，检索准确率提升68%</li><li>流程智控：RPA+LLM联合调度，审批链路压缩42%</li><li>决策沙盘：多源数据融合分析，预测偏差&lt;8.3%</li></ul>
+        <div class="diagram diagram-process"><div class="node"><b>01</b><span>知识中枢：自动构建部门知识图谱</span></div><div class="node"><b>02</b><span>流程智控：RPA+LLM联合调度</span></div><div class="node"><b>03</b><span>决策沙盘：多源数据融合分析</span></div><div class="node"><b>04</b><span>知识中枢：自动构建部门知识图谱</span></div></div>
+        <div class="metrics">
+        <div class="metric">
+          <strong>+68%</strong>
+          <span>知识检索准确率</span>
+          <small>对比传统关键词检索</small>
+        </div>
+        <div class="metric">
+          <strong>42%</strong>
+          <span>审批链路压缩</span>
+          <small>某市监局工单处理实测</small>
+        </div>
+        <div class="metric">
+          <strong>&lt;8.3%</strong>
+          <span>预测偏差</span>
+          <small>供应链需求预测模型误差</small>
+        </div></div>
+        <figure class="visual" aria-label="海岳大模型12类能力矩阵图">
+    <div class="visual-orbit">
+      <span></span><span></span><span></span>
+    </div>
+    <figcaption>
+      <strong>海岳大模型12类能力矩阵图</strong>
+      <small>Inspur Haiyue Corporate</small>
+    </figcaption>
+    <div class="visual-tags"><em>知识中枢：自动构建部门知识图谱</em><em>流程智控：RPA+LLM联合调度</em><em>决策沙盘：多源数据融合分析</em><em>知识中枢：自动构建部门知识图谱</em></div>
+  </figure>
+      </div>
+      <p class="visual-hint">3×4网格能力矩阵，每格含图标+能力名+效果短语；主色调primary+accent组合，图标统一线性风格</p>
+    </section>
+    <section class="slide layout-process-flow">
+      <header>
+        <div class="slide-kicker">浪潮数字企业 · 06</div>
+        <h2>落地之径：三步走，零负担接入</h2>
+        <p class="purpose">降低行动门槛，强化可实施性</p>
+      </header>
+      <div class="key-message">评估→试点→推广，每个阶段交付明确成果与责任界面</div>
+      <div class="content-block">
+        <ul><li>阶段1（2周）：业务场景诊断+POC环境部署</li><li>阶段2（4周）：1个高频场景上线（如智能公文生成）</li><li>阶段3（8周）：3个系统对接+部门级推广</li></ul>
+        <div class="diagram diagram-process"><div class="node"><b>01</b><span>评估诊断</span></div><div class="node"><b>02</b><span>POC验证</span></div><div class="node"><b>03</b><span>规模化推广</span></div><div class="node"><b>04</b><span>阶段1（2周）：业务场景诊断+POC环境部署</span></div><div class="node"><b>05</b><span>阶段2（4周）：1个高频场景上线（如智能公文生成</span></div></div>
+        <div class="metrics">
+        <div class="metric">
+          <strong>3</strong>
+          <span>核心要点</span>
+          <small>项</small>
+        </div>
+        <div class="metric">
+          <strong>P6</strong>
+          <span>页面定位</span>
+          <small>结构页</small>
+        </div></div>
+        <figure class="visual" aria-label="海岳大模型三步落地路径图">
+    <div class="visual-orbit">
+      <span></span><span></span><span></span>
+    </div>
+    <figcaption>
+      <strong>海岳大模型三步落地路径图</strong>
+      <small>Inspur Haiyue Corporate</small>
+    </figcaption>
+    <div class="visual-tags"><em>评估诊断</em><em>POC验证</em><em>规模化推广</em><em>阶段1（2周）：业务场景诊断+POC环境部署</em></div>
+  </figure>
+      </div>
+      <p class="visual-hint">横向三段式时间轴，每段含阶段编号、周期、交付物图标与文字；箭头连接，箭头色secondary</p>
+    </section>
+    <section class="slide layout-two-column">
+      <header>
+        <div class="slide-kicker">浪潮数字企业 · 07</div>
+        <h2>实践印证：已在5类政企场景稳定运行</h2>
+        <p class="purpose">用真实案例增强说服力与代入感</p>
+      </header>
+      <div class="key-message">非样板工程，而是经过生产环境压力验证的成熟能力</div>
+      <div class="content-block">
+        <ul><li>某省大数据局：政策文件智能解读，人工复核减少75%</li><li>某央企制造集团：设备维修报告自动生成，撰写效率提升5倍</li><li>某市医保中心：参保咨询应答准确率98.2%，坐席压力下降31%</li></ul>
+        <div class="diagram diagram-process"><div class="node"><b>01</b><span>某省大数据局：政策文件智能解读</span></div><div class="node"><b>02</b><span>某央企制造集团：设备维修报告自动生成</span></div><div class="node"><b>03</b><span>某市医保中心：参保咨询应答准确率98.2%</span></div><div class="node"><b>04</b><span>某省大数据局：政策文件智能解读</span></div></div>
+        <div class="metrics">
+        <div class="metric">
+          <strong>75%</strong>
+          <span>人工复核减少</span>
+          <small>政策解读场景</small>
+        </div>
+        <div class="metric">
+          <strong>5×</strong>
+          <span>撰写效率提升</span>
+          <small>设备维修报告</small>
+        </div>
+        <div class="metric">
+          <strong>98.2%</strong>
+          <span>应答准确率</span>
+          <small>医保咨询问答</small>
+        </div></div>
+        <figure class="visual" aria-label="海岳大模型已落地客户Logo墙">
+    <div class="visual-orbit">
+      <span></span><span></span><span></span>
+    </div>
+    <figcaption>
+      <strong>海岳大模型已落地客户Logo墙</strong>
+      <small>Inspur Haiyue Corporate</small>
+    </figcaption>
+    <div class="visual-tags"><em>某省大数据局：政策文件智能解读</em><em>某央企制造集团：设备维修报告自动生成</em><em>某市医保中心：参保咨询应答准确率98.2%</em><em>某省大数据局：政策文件智能解读</em></div>
+  </figure>
+      </div>
+      <p class="visual-hint">左右图文：左3个客户Logo（政务/制造/医疗），右3段精炼案例描述；Logo灰度处理，仅保留轮廓</p>
+    </section>
+    <section class="slide layout-insight-cards">
+      <header>
+        <div class="slide-kicker">浪潮数字企业 · 08</div>
+        <h2>共建之策：不止交付，更赋能力</h2>
+        <p class="purpose">传递长期伙伴关系，缓解采购顾虑</p>
+      </header>
+      <div class="key-message">提供专属AI运营团队+季度能力升级+联合创新实验室</div>
+      <div class="content-block">
+        <ul><li>专属客户成功经理全程跟进，SLA响应≤2小时</li><li>每季度发布行业微调模型包（政务/金融/能源）</li><li>共建AI应用创新实验室，共享浪潮算力与数据治理经验</li></ul>
+        <div class="diagram diagram-process"><div class="node"><b>01</b><span>专属客户成功经理全程跟进</span></div><div class="node"><b>02</b><span>每季度发布行业微调模型包（政务/金融/能源）</span></div><div class="node"><b>03</b><span>共建AI应用创新实验室</span></div><div class="node"><b>04</b><span>专属客户成功经理全程跟进</span></div></div>
+        <div class="metrics">
+        <div class="metric">
+          <strong>≤2h</strong>
+          <span>SLA响应时效</span>
+          <small>工作日紧急事件</small>
+        </div>
+        <div class="metric">
+          <strong>Q1/Q2/Q3/Q4</strong>
+          <span>模型更新频次</span>
+          <small>行业微调模型包</small>
+        </div>
+        <div class="metric">
+          <strong>1+N</strong>
+          <span>联合实验室</span>
+          <small>1个主实验室+N个行业分站</small>
+        </div></div>
+        <figure class="visual" aria-label="海岳大模型客户共建服务三支柱">
+    <div class="visual-orbit">
+      <span></span><span></span><span></span>
+    </div>
+    <figcaption>
+      <strong>海岳大模型客户共建服务三支柱</strong>
+      <small>Inspur Haiyue Corporate</small>
+    </figcaption>
+    <div class="visual-tags"><em>专属客户成功经理全程跟进</em><em>每季度发布行业微调模型包（政务/金融/能源）</em><em>共建AI应用创新实验室</em><em>专属客户成功经理全程跟进</em></div>
+  </figure>
+      </div>
+      <p class="visual-hint">三组并列「服务卡」：顶部图标（人形/日历/建筑）+服务名称+一句话承诺；卡片底色surface，图标色accent</p>
+    </section>
+    <section class="slide layout-closing">
+      <header>
+        <div class="slide-kicker">浪潮数字企业 · 09</div>
+        <h2>结语：让AI真正长在您的业务土壤里</h2>
+        <p class="purpose">收束价值，激发行动意愿</p>
+      </header>
+      <div class="key-message">海岳不是替代人力的黑盒，而是放大组织智慧的智能协作者</div>
+      <div class="content-block">
+        <ul><li>即日起开放首批20个客户深度体验名额</li><li>提供免费业务场景适配评估报告</li><li>签署意向后3个工作日内启动POC</li></ul>
+        <div class="diagram diagram-process"><div class="node"><b>01</b><span>形成共识</span></div><div class="node"><b>02</b><span>确认路径</span></div><div class="node"><b>03</b><span>启动行动</span></div></div>
+        <div class="metrics">
+        <div class="metric">
+          <strong>3</strong>
+          <span>核心要点</span>
+          <small>项</small>
+        </div>
+        <div class="metric">
+          <strong>P9</strong>
+          <span>页面定位</span>
+          <small>结构页</small>
+        </div></div>
+        <figure class="visual" aria-label="浪潮品牌浪花纹样收尾">
+    <div class="visual-orbit">
+      <span></span><span></span><span></span>
+    </div>
+    <figcaption>
+      <strong>浪潮品牌浪花纹样收尾</strong>
+      <small>Inspur Haiyue Corporate</small>
+    </figcaption>
+    <div class="visual-tags"><em>形成共识</em><em>确认路径</em><em>启动行动</em></div>
+  </figure>
+      </div>
+      <p class="visual-hint">居中主标语+三行行动号召；底部横贯浪花纹样（简化版浪潮Logo抽象纹），色值primary</p>
+    </section>
+    </main>
+  </body>
+</html>

@@ -7,11 +7,29 @@ interface ProviderSettingsProps {
   onChange: (value: ApiSettings) => void;
 }
 
-const providerLabels: Record<ProviderType, string> = {
-  openai: "OpenAI",
-  "azure-openai": "Azure OpenAI",
-  compatible: "OpenAI 兼容接口"
-};
+const providerOptions: Array<{ value: ProviderType; label: string }> = [
+  { value: "compatible", label: "国内/通用 OpenAI 兼容接口" },
+  { value: "openai", label: "OpenAI 官方接口" },
+  { value: "azure-openai", label: "Azure OpenAI" }
+];
+
+const compatibleExamples = [
+  {
+    name: "阿里百炼",
+    endpoint: "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    model: "qwen-plus"
+  },
+  {
+    name: "腾讯混元",
+    endpoint: "https://api.hunyuan.cloud.tencent.com/v1",
+    model: "控制台可用模型名"
+  },
+  {
+    name: "DeepSeek",
+    endpoint: "https://api.deepseek.com",
+    model: "deepseek-chat"
+  }
+];
 
 export function ProviderSettings({ value, onChange }: ProviderSettingsProps) {
   const update = (patch: Partial<ApiSettings>) => onChange({ ...value, ...patch });
@@ -34,9 +52,9 @@ export function ProviderSettings({ value, onChange }: ProviderSettingsProps) {
         <label className="field">
           <span>服务商</span>
           <select value={value.provider} onChange={handleProviderChange}>
-            {Object.entries(providerLabels).map(([provider, label]) => (
-              <option key={provider} value={provider}>
-                {label}
+            {providerOptions.map((provider) => (
+              <option key={provider.value} value={provider.value}>
+                {provider.label}
               </option>
             ))}
           </select>
@@ -47,7 +65,7 @@ export function ProviderSettings({ value, onChange }: ProviderSettingsProps) {
           <input
             value={value.model}
             onChange={(event) => update({ model: event.target.value })}
-            placeholder="例如：gpt-4.1-mini"
+            placeholder="例如：qwen-plus、deepseek-chat、hunyuan-turbos-latest"
           />
         </label>
       </div>
@@ -58,7 +76,7 @@ export function ProviderSettings({ value, onChange }: ProviderSettingsProps) {
           type="password"
           value={value.apiKey}
           onChange={(event) => update({ apiKey: event.target.value })}
-          placeholder="仅发送到本地后端，不写入浏览器存储"
+          placeholder="填写百炼、混元、DeepSeek 等平台的 API Key"
           autoComplete="off"
         />
       </label>
@@ -74,7 +92,9 @@ export function ProviderSettings({ value, onChange }: ProviderSettingsProps) {
             placeholder={
               value.provider === "openai"
                 ? "可留空，默认由后端使用 OpenAI 官方地址"
-                : "https://your-resource.openai.azure.com 或兼容 API base URL"
+                : value.provider === "azure-openai"
+                  ? "https://your-resource.openai.azure.com"
+                  : "例如：https://dashscope.aliyuncs.com/compatible-mode/v1"
             }
           />
         </div>
@@ -82,6 +102,18 @@ export function ProviderSettings({ value, onChange }: ProviderSettingsProps) {
           <small className="field-hint">当前服务商需要填写完整接口地址。</small>
         ) : null}
       </label>
+
+      {value.provider === "compatible" ? (
+        <div className="provider-examples" aria-label="国内兼容接口示例">
+          {compatibleExamples.map((example) => (
+            <div className="provider-example" key={example.name}>
+              <strong>{example.name}</strong>
+              <span>{example.endpoint}</span>
+              <small>模型示例：{example.model}</small>
+            </div>
+          ))}
+        </div>
+      ) : null}
 
       {value.provider === "azure-openai" ? (
         <div className="form-grid two">

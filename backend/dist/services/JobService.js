@@ -5,6 +5,7 @@ import { OpenAiCompatibleProvider } from "../providers/OpenAiCompatibleProvider.
 import { createFallbackDeck } from "../generators/FallbackDeckFactory.js";
 import { DeckRenderer } from "../renderers/DeckRenderer.js";
 import { config } from "../config.js";
+import { VisualDesignAgent } from "../generators/VisualDesignAgent.js";
 const progressByStatus = {
     Created: 4,
     ValidatingSkill: 16,
@@ -20,8 +21,8 @@ const messageByStatus = {
     ValidatingSkill: "正在校验 Skill 结构与模板资源",
     BuildingPrompt: "正在组合生成提示词与品牌规则",
     GeneratingOutline: "正在生成演示稿大纲",
-    GeneratingSlides: "正在撰写逐页内容",
-    Rendering: "正在渲染预览与导出文件",
+    GeneratingSlides: "正在生成逐页内容、版式和视觉资产规划",
+    Rendering: "正在渲染配色、排版、图片和导出文件",
     Ready: "演示稿已生成，可预览和导出",
     Failed: "生成失败"
 };
@@ -31,35 +32,19 @@ function nowIso() {
 function asErrorMessage(error) {
     return error instanceof Error ? error.message : String(error);
 }
-function normalizeSlides(deck, expectedCount, fallback) {
-    const slides = Array.isArray(deck.slides) ? deck.slides : [];
-    const normalizedSlides = Array.from({ length: expectedCount }, (_, index) => {
-        const source = slides[index] ?? fallback.slides[index] ?? fallback.slides[fallback.slides.length - 1];
-        return {
-            title: source.title || `第 ${index + 1} 页`,
-            purpose: source.purpose || fallback.slides[index]?.purpose || "承接整体汇报逻辑",
-            bullets: Array.isArray(source.bullets) && source.bullets.length > 0 ? source.bullets.slice(0, 5) : fallback.slides[index]?.bullets ?? [],
-            visualHint: source.visualHint || fallback.slides[index]?.visualHint || "结构化商务版式"
-        };
-    });
-    return {
-        title: deck.title || fallback.title,
-        subtitle: deck.subtitle || fallback.subtitle,
-        narrative: deck.narrative || fallback.narrative,
-        slides: normalizedSlides
-    };
-}
 export class JobService {
     skillLoader;
     promptBuilder;
     provider;
     renderer;
+    visualAgent;
     jobs = new Map();
-    constructor(skillLoader = new SkillLoader(), promptBuilder = new PromptBuilder(), provider = new OpenAiCompatibleProvider(), renderer = new DeckRenderer()) {
+    constructor(skillLoader = new SkillLoader(), promptBuilder = new PromptBuilder(), provider = new OpenAiCompatibleProvider(), renderer = new DeckRenderer(), visualAgent = new VisualDesignAgent()) {
         this.skillLoader = skillLoader;
         this.promptBuilder = promptBuilder;
         this.provider = provider;
         this.renderer = renderer;
+        this.visualAgent = visualAgent;
     }
     createJob(request, uploadedSkill) {
         const id = randomUUID();
@@ -106,7 +91,7 @@ export class JobService {
                 { role: "user", content: prompt.outlinePrompt }
             ]);
             return {
-                deck: normalizeSlides(outline, request.brief.pageCount, fallback),
+                deck: this.visualAgent.enrich(outline, request.brief.pageCount, fallback, request.brief, skill),
                 prompt,
                 usedFallback: false
             };
@@ -122,19 +107,19 @@ export class JobService {
             };
         }
     }
-    async generateSlides(request, outline, prompt, fallback) {
+    async generateSlides(request, skill, outline, prompt, fallback) {
         try {
             const deck = await this.provider.generateJson(request.apiSettings, [
                 { role: "system", content: prompt.systemPrompt },
                 { role: "user", content: this.promptBuilder.buildSlidePrompt(prompt, outline) }
             ]);
-            return normalizeSlides(deck, request.brief.pageCount, fallback);
+            return this.visualAgent.enrich(deck, request.brief.pageCount, fallback, request.brief, skill);
         }
         catch (error) {
             if (!config.allowModelFallback) {
                 throw new Error(`生成逐页内容失败：${asErrorMessage(error)}`);
             }
-            return outline;
+            return this.visualAgent.enrich(outline, request.brief.pageCount, fallback, request.brief, skill);
         }
     }
     async runJob(id, request, uploadedSkill) {
@@ -147,7 +132,7 @@ export class JobService {
             this.setStatus(id, "GeneratingOutline");
             const outlineResult = await this.generateOutline(request, skill, fallback);
             this.setStatus(id, "GeneratingSlides", outlineResult.usedFallback ? "模型接口暂不可用，正在使用本地结构化内容生成页面" : messageByStatus.GeneratingSlides);
-            const deck = await this.generateSlides(request, outlineResult.deck, prompt, fallback);
+            const deck = await this.generateSlides(request, skill, outlineResult.deck, prompt, fallback);
             this.setStatus(id, "Rendering");
             const rendered = await this.renderer.render(id, deck, request.brief, skill);
             this.updateJob(id, {

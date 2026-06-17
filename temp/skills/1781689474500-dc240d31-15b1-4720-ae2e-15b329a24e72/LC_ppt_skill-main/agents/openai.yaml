@@ -1,0 +1,8 @@
+interface:
+  display_name: "Inspur PPT Skill"
+  short_description: "生成浪潮/海岳公司风格 PPT 和网页演示"
+  brand_color: "#0D48CE"
+  default_prompt: "Use $inspur-ppt-skill to create a 浪潮/海岳公司风格 PPT from my outline and materials."
+
+policy:
+  allow_implicit_invocation: true
