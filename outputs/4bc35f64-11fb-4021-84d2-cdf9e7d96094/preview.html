@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>完整 Job Mock 联调</title>
+    <style>
+      :root {
+        color: #172033;
+        background: #eef2f5;
+        font-family: Inter, "Microsoft YaHei", Arial, sans-serif;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: #eef2f5; }
+      .deck { display: grid; gap: 20px; padding: 24px; }
+      .slide {
+        min-height: min(720px, calc(100vh - 48px));
+        border: 1px solid rgba(23, 32, 51, 0.12);
+        border-radius: 8px;
+        padding: 52px;
+        background:
+          linear-gradient(135deg, rgba(255,255,255,0.96), rgba(242,247,244,0.94)),
+          radial-gradient(circle at 84% 18%, rgba(42, 111, 151, 0.16), transparent 30%);
+        box-shadow: 0 20px 50px rgba(23, 32, 51, 0.08);
+      }
+      .cover {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background:
+          linear-gradient(135deg, rgba(255,255,255,0.98), rgba(232,241,247,0.95)),
+          linear-gradient(90deg, #2a6f97 0 8px, transparent 8px);
+      }
+      .slide-kicker {
+        color: #2a6f97;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0;
+        margin-bottom: 18px;
+      }
+      h1, h2 { letter-spacing: 0; margin: 0; color: #172033; }
+      h1 { max-width: 900px; font-size: 52px; line-height: 1.08; }
+      h2 { max-width: 900px; font-size: 38px; line-height: 1.14; }
+      .subtitle, .purpose {
+        max-width: 860px;
+        margin: 18px 0 0;
+        color: #4d5b6c;
+        font-size: 20px;
+        line-height: 1.6;
+      }
+      ul {
+        display: grid;
+        gap: 14px;
+        max-width: 880px;
+        margin: 34px 0;
+        padding-left: 24px;
+        font-size: 20px;
+        line-height: 1.55;
+      }
+      li::marker { color: #2a6f97; }
+      .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 34px;
+      }
+      .pill, .visual-hint {
+        border: 1px solid rgba(23, 32, 51, 0.14);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.76);
+        color: #445266;
+      }
+      .pill { padding: 10px 14px; }
+      .visual-hint {
+        max-width: 880px;
+        padding: 16px 18px;
+        font-size: 15px;
+      }
+      @media (max-width: 760px) {
+        .deck { padding: 12px; }
+        .slide { min-height: auto; padding: 28px; }
+        h1 { font-size: 36px; }
+        h2 { font-size: 28px; }
+        .subtitle, .purpose, ul { font-size: 17px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="deck">
+      <section class="slide cover">
+        <div class="slide-kicker">测试公司 · 中文</div>
+        <h1>完整 Job Mock 联调</h1>
+        <p class="subtitle">OpenAI 兼容接口</p>
+        <div class="meta-row">
+          <span class="pill">项目团队</span>
+          <span class="pill">企业咨询汇报</span>
+          <span class="pill">architecture-readme</span>
+        </div>
+      </section>
+      
+      <section class="slide">
+        <div class="slide-kicker">测试公司 · 01</div>
+        <h2>Mock 第 1 页</h2>
+        <p class="purpose">端到端验证</p>
+        <ul><li>后端成功调用模型接口</li><li>Job 状态继续推进</li><li>渲染文件可生成</li></ul>
+        <div class="visual-hint">商务汇报版式</div>
+      </section>
+      <section class="slide">
+        <div class="slide-kicker">测试公司 · 02</div>
+        <h2>Mock 第 2 页</h2>
+        <p class="purpose">端到端验证</p>
+        <ul><li>后端成功调用模型接口</li><li>Job 状态继续推进</li><li>渲染文件可生成</li></ul>
+        <div class="visual-hint">商务汇报版式</div>
+      </section>
+      <section class="slide">
+        <div class="slide-kicker">测试公司 · 03</div>
+        <h2>Mock 第 3 页</h2>
+        <p class="purpose">端到端验证</p>
+        <ul><li>后端成功调用模型接口</li><li>Job 状态继续推进</li><li>渲染文件可生成</li></ul>
+        <div class="visual-hint">商务汇报版式</div>
+      </section>
+      <section class="slide">
+        <div class="slide-kicker">测试公司 · 04</div>
+        <h2>Mock 第 4 页</h2>
+        <p class="purpose">端到端验证</p>
+        <ul><li>后端成功调用模型接口</li><li>Job 状态继续推进</li><li>渲染文件可生成</li></ul>
+        <div class="visual-hint">商务汇报版式</div>
+      </section>
+    </main>
+  </body>
+</html>

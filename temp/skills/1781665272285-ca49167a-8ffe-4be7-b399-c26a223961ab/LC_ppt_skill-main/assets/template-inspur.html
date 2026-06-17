@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>[必填] 替换为 PPT 标题</title>
+  <style>
+    :root {
+      --blue: #0d48ce;
+      --blue-2: #1d78fa;
+      --blue-3: #006eff;
+      --cyan: #00a0a0;
+      --ink: #111827;
+      --muted: #667085;
+      --line: #d0d5dd;
+      --paper: #ffffff;
+      --soft: #eef5ff;
+      --deep: #001d58;
+      --orange: #ff7f00;
+      --font-zh: "Microsoft YaHei", "微软雅黑", "Noto Sans SC", "Source Han Sans SC", Arial, sans-serif;
+      --font-en: Inter, Arial, Helvetica, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; overflow: hidden; background: #050b1f; color: var(--ink); }
+    body { font-family: var(--font-zh); }
+
+    .deck { width: 100vw; height: 100vh; position: relative; overflow: hidden; }
+    .track { display: flex; height: 100%; transition: transform 520ms cubic-bezier(.2,.8,.2,1); }
+    .slide {
+      width: 100vw;
+      height: 100vh;
+      flex: 0 0 100vw;
+      position: relative;
+      padding: 7vh 7vw 8vh;
+      overflow: hidden;
+      background: var(--paper);
+    }
+    .slide.light { background: var(--paper); }
+    .slide.soft { background: linear-gradient(180deg, #f7fbff 0%, var(--soft) 100%); }
+    .slide.blue { background: radial-gradient(circle at 78% 14%, rgba(29,120,250,.45), transparent 28%), linear-gradient(135deg, var(--deep), var(--blue)); color: #fff; }
+    .slide.blue::after {
+      content: "";
+      position: absolute;
+      right: -12vw;
+      bottom: -18vh;
+      width: 52vw;
+      height: 52vw;
+      border: 1px solid rgba(255,255,255,.18);
+      transform: rotate(24deg);
+    }
+
+    h1, h2, h3, p { margin: 0; }
+    h2 { font-size: clamp(30px, 3vw, 46px); line-height: 1.14; letter-spacing: 0; color: var(--ink); }
+    .blue h2, .blue .hero-title, .blue .hero-subtitle, .blue .lead { color: #fff; }
+    .eyebrow { font: 700 14px/1 var(--font-en); letter-spacing: .14em; text-transform: uppercase; color: var(--blue-2); margin-bottom: 3vh; }
+    .blue .eyebrow { color: rgba(255,255,255,.78); }
+    .hero-title { font-size: clamp(44px, 6vw, 82px); line-height: 1.08; font-weight: 800; letter-spacing: 0; max-width: 14ch; }
+    .hero-subtitle { margin-top: 3vh; font-size: clamp(20px, 2vw, 30px); line-height: 1.45; max-width: 34ch; color: var(--muted); }
+    .lead { margin-top: 2.5vh; font-size: clamp(18px, 1.55vw, 25px); line-height: 1.65; color: #344054; max-width: 44ch; }
+    .meta-row { position: absolute; left: 7vw; right: 7vw; bottom: 6vh; display: flex; gap: 22px; font: 600 15px/1 var(--font-en); color: rgba(255,255,255,.76); }
+    .meta-row span + span::before { content: ""; display: inline-block; width: 28px; height: 1px; margin: 0 18px 4px 0; background: currentColor; opacity: .55; }
+
+    [data-layout="agenda"] { display: grid; grid-template-columns: 0.9fr 1.3fr; gap: 7vw; align-items: center; }
+    .agenda-list { display: grid; gap: 2vh; }
+    .agenda-list div { display: grid; grid-template-columns: 86px 1fr; align-items: center; border-top: 1px solid var(--line); padding: 2.3vh 0; }
+    .agenda-list b { font: 800 32px/1 var(--font-en); color: var(--blue); }
+    .agenda-list span { font-size: clamp(22px, 2vw, 34px); font-weight: 700; }
+
+    [data-layout="section"] { display: flex; flex-direction: column; justify-content: center; }
+    .section-no { font: 800 clamp(86px, 15vw, 210px)/.85 var(--font-en); color: rgba(255,255,255,.18); }
+    .section-title { font-size: clamp(48px, 6vw, 86px); margin-top: -2vh; }
+
+    .card-grid { margin-top: 6vh; display: grid; gap: 2vw; }
+    .cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .cols-4 { grid-template-columns: repeat(4, 1fr); }
+    .card { border-top: 4px solid var(--blue); background: #f8fbff; padding: 28px; min-height: 30vh; }
+    .card b { display: block; font-size: clamp(21px, 1.6vw, 28px); margin-bottom: 2vh; }
+    .card p { color: #475467; font-size: clamp(15px, 1.05vw, 18px); line-height: 1.7; }
+
+    .metric-grid { margin-top: 7vh; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2vw; }
+    .metric-grid div { background: #fff; border-left: 6px solid var(--blue); padding: 34px 28px; min-height: 28vh; display: flex; flex-direction: column; justify-content: center; }
+    .metric-grid strong { font: 800 clamp(54px, 7vw, 108px)/1 var(--font-en); color: var(--blue); }
+    .metric-grid span { margin-top: 2vh; font-size: clamp(17px, 1.3vw, 22px); color: #344054; }
+
+    [data-layout="split"] { display: grid; grid-template-columns: .9fr 1.1fr; gap: 5vw; align-items: center; }
+    .bullets { margin: 3vh 0 0; padding-left: 1.2em; color: #344054; font-size: clamp(16px, 1.2vw, 21px); line-height: 1.8; }
+    .image-frame { margin: 0; background: #fff; border: 1px solid var(--line); height: 58vh; display: grid; place-items: center; overflow: hidden; }
+    .image-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+    .flow { margin-top: 8vh; display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; }
+    .flow div { position: relative; min-height: 28vh; padding: 28px 22px; background: #f8fbff; border-top: 4px solid var(--blue-2); }
+    .flow div + div::before { content: ""; position: absolute; left: -18px; top: 50%; width: 18px; height: 2px; background: var(--blue-2); }
+    .flow b { display: block; font: 800 36px/1 var(--font-en); color: var(--blue); margin-bottom: 8vh; }
+    .flow span { font-size: clamp(18px, 1.4vw, 24px); font-weight: 700; }
+
+    .compare-grid { margin-top: 7vh; display: grid; grid-template-columns: 1fr 1fr; gap: 2vw; }
+    .compare-grid article { min-height: 48vh; padding: 34px; background: #fff; border: 1px solid var(--line); }
+    .compare-grid .accent { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .compare-grid h3 { font-size: clamp(24px, 2vw, 34px); margin-bottom: 3vh; }
+    .compare-grid p { font-size: clamp(17px, 1.25vw, 22px); line-height: 1.75; color: #475467; }
+    .compare-grid .accent p { color: rgba(255,255,255,.88); }
+
+    .nav { position: fixed; right: 28px; bottom: 24px; z-index: 10; display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,.75); font: 600 13px/1 var(--font-en); }
+    .nav button { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.34); background: rgba(0,29,88,.64); color: #fff; cursor: pointer; }
+    .progress { position: fixed; left: 0; bottom: 0; height: 4px; width: 100vw; background: rgba(255,255,255,.18); z-index: 11; }
+    .progress i { display: block; height: 100%; background: var(--blue-2); width: 0%; transition: width 300ms ease; }
+
+    @media (max-width: 780px) {
+      .slide { padding: 7vh 7vw 10vh; }
+      [data-layout="agenda"], [data-layout="split"] { grid-template-columns: 1fr; align-items: start; }
+      .cols-3, .cols-4, .metric-grid, .compare-grid, .flow { grid-template-columns: 1fr; }
+      .card, .metric-grid div, .flow div, .compare-grid article { min-height: auto; }
+      .image-frame { height: 32vh; }
+      .flow div + div::before { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="deck" aria-live="polite">
+    <div class="track" id="track">
+      <!-- SLIDES_HERE -->
+    </div>
+  </main>
+  <div class="nav"><button id="prev" aria-label="上一页">‹</button><span id="count">1 / 1</span><button id="next" aria-label="下一页">›</button></div>
+  <div class="progress"><i id="bar"></i></div>
+  <script>
+    const track = document.getElementById('track');
+    const slides = [...document.querySelectorAll('.slide')];
+    const count = document.getElementById('count');
+    const bar = document.getElementById('bar');
+    let index = 0;
+
+    function clamp(n) { return Math.max(0, Math.min(slides.length - 1, n)); }
+    function go(n) {
+      index = clamp(n);
+      track.style.transform = `translateX(${-index * 100}vw)`;
+      count.textContent = `${index + 1} / ${slides.length}`;
+      bar.style.width = slides.length <= 1 ? '100%' : `${(index / (slides.length - 1)) * 100}%`;
+    }
+
+    document.getElementById('prev').onclick = () => go(index - 1);
+    document.getElementById('next').onclick = () => go(index + 1);
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') go(index + 1);
+      if (event.key === 'ArrowLeft' || event.key === 'PageUp') go(index - 1);
+      if (event.key === 'Home') go(0);
+      if (event.key === 'End') go(slides.length - 1);
+    });
+    window.addEventListener('wheel', (event) => {
+      if (Math.abs(event.deltaY) < 24) return;
+      go(index + (event.deltaY > 0 ? 1 : -1));
+    }, { passive: true });
+
+    let touchX = null;
+    window.addEventListener('touchstart', (event) => { touchX = event.touches[0].clientX; }, { passive: true });
+    window.addEventListener('touchend', (event) => {
+      if (touchX == null) return;
+      const dx = event.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 50) go(index + (dx < 0 ? 1 : -1));
+      touchX = null;
+    }, { passive: true });
+
+    go(0);
+  </script>
+</body>
+</html>

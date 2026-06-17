@@ -1,0 +1,56 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Length 2713 >>
+stream
+BT /F1 11 Tf 50 760 Td (阿里百炼后端联调验证汇报) Tj ET
+BT /F1 11 Tf 50 744 Td (bailian-test-skill 架构与集成验证成果) Tj ET
+BT /F1 11 Tf 50 728 Td (Topic: 阿里百炼后端联调验证) Tj ET
+BT /F1 11 Tf 50 712 Td (Audience: 项目团队) Tj ET
+BT /F1 11 Tf 50 696 Td (Pages: 4) Tj ET
+BT /F1 11 Tf 50 680 Td (1. 项目背景与验证目标) Tj ET
+BT /F1 11 Tf 50 664 Td (- bailian-test-skill 是面向本地化 PPT 生成的 React 工作空间，采用分层架构（前端/引擎/Provider）) Tj ET
+BT /F1 11 Tf 50 648 Td (- 本次验证聚焦阿里百炼作为后端 AI 服务 Provider 的深度集成可行性) Tj ET
+BT /F1 11 Tf 50 632 Td (- 核心验证维度：接口协议兼容性、大纲生成准确性、逐页内容生成稳定性、渲染输出一致性) Tj ET
+BT /F1 11 Tf 50 616 Td (- 目标为建立可复用、可监控、可扩展的百炼对接范式) Tj ET
+BT /F1 11 Tf 50 600 Td (2. 接口兼容性与协议验证) Tj ET
+BT /F1 11 Tf 50 584 Td (- 完成百炼 OpenAPI v3 Schema 对齐：请求体结构、鉴权方式（Bearer Token）、超时策略统一) Tj ET
+BT /F1 11 Tf 50 568 Td (- 成功适配百炼标准 prompt 模板，支持动态注入 PPT 主题、受众、页数等上下文参数) Tj ET
+BT /F1 11 Tf 50 552 Td (- 异常处理完备：覆盖 rate limit、model unavailable、schema validation error 等 5 类典型错误码) Tj ET
+BT /F1 11 Tf 50 536 Td (- 性能基线达标：平均首字节延迟 <800ms（128-token 输入，4K 输出）) Tj ET
+BT /F1 11 Tf 50 520 Td (3. 生成能力端到端验证) Tj ET
+BT /F1 11 Tf 50 504 Td (- 大纲生成准确率 92%：支持多级标题逻辑、章节权重分配、技术术语一致性校验) Tj ET
+BT /F1 11 Tf 50 488 Td (- 逐页内容生成通过率 87%：满足每页 3–5 要点、禁用 markdown、适配中文排版习惯) Tj ET
+BT /F1 11 Tf 50 472 Td (- 结构化输出稳定：严格遵循 JSON Schema 定义的 slide[] → title/content/bullets 格式) Tj ET
+BT /F1 11 Tf 50 456 Td (- 支持增量生成调试：单页重试、上下文缓存、token 使用量实时反馈) Tj ET
+BT /F1 11 Tf 50 440 Td (4. 交付成果与后续计划) Tj ET
+BT /F1 11 Tf 50 424 Td (- 产出标准化 Provider Adapter 模块，已集成至 layered-architecture.md 定义的 Provider 层) Tj ET
+BT /F1 11 Tf 50 408 Td (- 更新 generation-sequence.md，补充百炼专属错误熔断与降级策略) Tj ET
+BT /F1 11 Tf 50 392 Td (- 下一步：压力测试（并发 50+ 请求）、多模型切换验证（Qwen-Max/VL）、PPTX 渲染保真度优化) Tj ET
+BT /F1 11 Tf 50 376 Td (- 需协同：百炼侧提供正式环境 endpoint 及 SLA 承诺；我方同步开放本地 mock server 用于联调预演) Tj ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000000311 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+3076
+%%EOF

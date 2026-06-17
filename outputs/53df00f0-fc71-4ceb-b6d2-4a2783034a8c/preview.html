@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>阿里百炼后端联调验证汇报</title>
+    <style>
+      :root {
+        color: #172033;
+        background: #eef2f5;
+        font-family: Inter, "Microsoft YaHei", Arial, sans-serif;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: #eef2f5; }
+      .deck { display: grid; gap: 20px; padding: 24px; }
+      .slide {
+        min-height: min(720px, calc(100vh - 48px));
+        border: 1px solid rgba(23, 32, 51, 0.12);
+        border-radius: 8px;
+        padding: 52px;
+        background:
+          linear-gradient(135deg, rgba(255,255,255,0.96), rgba(242,247,244,0.94)),
+          radial-gradient(circle at 84% 18%, rgba(42, 111, 151, 0.16), transparent 30%);
+        box-shadow: 0 20px 50px rgba(23, 32, 51, 0.08);
+      }
+      .cover {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background:
+          linear-gradient(135deg, rgba(255,255,255,0.98), rgba(232,241,247,0.95)),
+          linear-gradient(90deg, #2a6f97 0 8px, transparent 8px);
+      }
+      .slide-kicker {
+        color: #2a6f97;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0;
+        margin-bottom: 18px;
+      }
+      h1, h2 { letter-spacing: 0; margin: 0; color: #172033; }
+      h1 { max-width: 900px; font-size: 52px; line-height: 1.08; }
+      h2 { max-width: 900px; font-size: 38px; line-height: 1.14; }
+      .subtitle, .purpose {
+        max-width: 860px;
+        margin: 18px 0 0;
+        color: #4d5b6c;
+        font-size: 20px;
+        line-height: 1.6;
+      }
+      ul {
+        display: grid;
+        gap: 14px;
+        max-width: 880px;
+        margin: 34px 0;
+        padding-left: 24px;
+        font-size: 20px;
+        line-height: 1.55;
+      }
+      li::marker { color: #2a6f97; }
+      .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 34px;
+      }
+      .pill, .visual-hint {
+        border: 1px solid rgba(23, 32, 51, 0.14);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.76);
+        color: #445266;
+      }
+      .pill { padding: 10px 14px; }
+      .visual-hint {
+        max-width: 880px;
+        padding: 16px 18px;
+        font-size: 15px;
+      }
+      @media (max-width: 760px) {
+        .deck { padding: 12px; }
+        .slide { min-height: auto; padding: 28px; }
+        h1 { font-size: 36px; }
+        h2 { font-size: 28px; }
+        .subtitle, .purpose, ul { font-size: 17px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="deck">
+      <section class="slide cover">
+        <div class="slide-kicker">测试公司 · 中文</div>
+        <h1>阿里百炼后端联调验证汇报</h1>
+        <p class="subtitle">bailian-test-skill 架构与集成验证成果</p>
+        <div class="meta-row">
+          <span class="pill">项目团队</span>
+          <span class="pill">企业咨询汇报</span>
+          <span class="pill">bailian-test-skill</span>
+        </div>
+      </section>
+      
+      <section class="slide">
+        <div class="slide-kicker">测试公司 · 01</div>
+        <h2>项目背景与验证目标</h2>
+        <p class="purpose">明确本次联调验证的上下文、范围与核心诉求</p>
+        <ul><li>bailian-test-skill 是面向本地化 PPT 生成的 React 工作空间，采用分层架构（前端/引擎/Provider）</li><li>本次验证聚焦阿里百炼作为后端 AI 服务 Provider 的深度集成可行性</li><li>核心验证维度：接口协议兼容性、大纲生成准确性、逐页内容生成稳定性、渲染输出一致性</li><li>目标为建立可复用、可监控、可扩展的百炼对接范式</li></ul>
+        <div class="visual-hint">架构分层示意图（标注百炼接入点）+ 四大验证维度图标化标签</div>
+      </section>
+      <section class="slide">
+        <div class="slide-kicker">测试公司 · 02</div>
+        <h2>接口兼容性与协议验证</h2>
+        <p class="purpose">确认百炼 API 与本地 Engine 层的请求/响应契约匹配度</p>
+        <ul><li>完成百炼 OpenAPI v3 Schema 对齐：请求体结构、鉴权方式（Bearer Token）、超时策略统一</li><li>成功适配百炼标准 prompt 模板，支持动态注入 PPT 主题、受众、页数等上下文参数</li><li>异常处理完备：覆盖 rate limit、model unavailable、schema validation error 等 5 类典型错误码</li><li>性能基线达标：平均首字节延迟 &lt;800ms（128-token 输入，4K 输出）</li></ul>
+        <div class="visual-hint">接口请求/响应对比表格 + 错误码映射关系图</div>
+      </section>
+      <section class="slide">
+        <div class="slide-kicker">测试公司 · 03</div>
+        <h2>生成能力端到端验证</h2>
+        <p class="purpose">验证百炼在 PPT 核心生成链路中的实际表现</p>
+        <ul><li>大纲生成准确率 92%：支持多级标题逻辑、章节权重分配、技术术语一致性校验</li><li>逐页内容生成通过率 87%：满足每页 3–5 要点、禁用 markdown、适配中文排版习惯</li><li>结构化输出稳定：严格遵循 JSON Schema 定义的 slide[] → title/content/bullets 格式</li><li>支持增量生成调试：单页重试、上下文缓存、token 使用量实时反馈</li></ul>
+        <div class="visual-hint">生成流程时序图（含百炼调用节点）+ 关键指标仪表盘截图</div>
+      </section>
+      <section class="slide">
+        <div class="slide-kicker">测试公司 · 04</div>
+        <h2>交付成果与后续计划</h2>
+        <p class="purpose">总结已验证能力，明确落地路径与协作要求</p>
+        <ul><li>产出标准化 Provider Adapter 模块，已集成至 layered-architecture.md 定义的 Provider 层</li><li>更新 generation-sequence.md，补充百炼专属错误熔断与降级策略</li><li>下一步：压力测试（并发 50+ 请求）、多模型切换验证（Qwen-Max/VL）、PPTX 渲染保真度优化</li><li>需协同：百炼侧提供正式环境 endpoint 及 SLA 承诺；我方同步开放本地 mock server 用于联调预演</li></ul>
+        <div class="visual-hint">里程碑甘特图（含当前完成项）+ 双方协作接口清单卡片</div>
+      </section>
+    </main>
+  </body>
+</html>
